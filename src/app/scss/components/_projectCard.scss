@@ -1,0 +1,116 @@
+  .projectCard {
+      display: grid;
+      grid-template-rows: 90% 10%;
+      height: 600px;
+      position: relative;
+      cursor: pointer;
+  }
+
+  .projectImageWrapp {
+      position: relative;
+      display: block;
+  }
+
+  .projectCardHeading {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      border: 2px solid $articaMainBlue;
+
+      & h1 {
+          text-transform: uppercase;
+          font-weight: 300;
+          margin-left: 10px;
+      }
+
+  }
+
+  .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background: darken($color: $articaMainBlue, $amount: 15);
+  }
+
+  .projectCard:hover .overlay {
+      opacity: 1;
+
+  }
+
+  .projectCard:hover .overlay .overlayContent h1 {
+      animation-play-state: running;
+      letter-spacing: 6px;
+  }
+
+
+
+
+  .overlayContent {
+      color: white;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      height: 100%;
+
+      & h1 {
+          text-transform: uppercase;
+          margin-top: 50px;
+          font-size: 2em;
+          font-weight: 100;
+          letter-spacing: 2px;
+          //   -webkit-animation: tracking-in-expand-fwd-bottom 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2s both;
+          //   animation: tracking-in-expand-fwd-bottom 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2s both;
+          //   animation-play-state: paused;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          transition: all 0.6s ease-in-out;
+
+      }
+
+      & h2 {
+          transform: rotate(351deg) translate(-50%, -70%);
+          text-transform: uppercase;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          font-size: 6em;
+          opacity: 0.1;
+          background-color: $articaMainBlue;
+          color: transparent;
+          text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.1);
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          background-clip: text;
+      }
+
+      & .finished {
+          letter-spacing: 15px;
+          //   color: darken($color: $articaMainBlue, $amount: 10);
+      }
+
+      & .inProgress {
+          letter-spacing: 2px;
+          //   color: lighten($color: $articaMainBlue, $amount: 10);
+      }
+
+
+
+      & img {
+          opacity: 0.65;
+          position: relative;
+
+      }
+  }

@@ -1,0 +1,57 @@
+.aFooter {
+    height: 50vh;
+    @include lightBgVer2;
+    @include flexCenter;
+
+    & section {
+        width: 60%;
+        height: 100%;
+        // background: burlywood;
+        display: grid;
+        grid-template-rows: 80% 20%;
+    }
+}
+
+.footerContentWrapp {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+
+    & article {
+        display: grid;
+        grid-template-rows: 30% 70%;
+    }
+}
+
+.footerBarItem {
+    @include flexCenter;
+    // border-bottom: 1px solid white;
+
+    & svg {
+        width: 4rem;
+        border-right: 2px solid $articaMainBlue;
+        padding-right: 0.5rem;
+    }
+
+    & label {
+        margin-left: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+.footerContentInfo {
+    @include flexCenter;
+    flex-direction: column;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+
+    & label {
+        margin: 0.2rem 0;
+        font-weight: 200;
+    }
+}
+
+.partnersWrapp {
+    @include flexCenter;
+    gap: 2rem;
+}

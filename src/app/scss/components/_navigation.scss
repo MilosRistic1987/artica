@@ -1,0 +1,32 @@
+.navBar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    /* position: fixed; */
+}
+
+.navItems {
+    display: flex;
+    align-items: center;
+}
+
+.navItems li {
+    display: flex;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-left: 30px;
+    letter-spacing: 1.5px;
+    font-size: 30px;
+    font-weight: 200;
+    padding: 10px;
+    border: solid rgba(0, 0, 0, 0) 1px;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+}
+
+.navItems li:hover {
+    background: rgba(128, 128, 128, 0.153);
+    border: solid black 1px;
+    cursor: pointer;
+}

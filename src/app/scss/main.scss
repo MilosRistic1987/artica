@@ -1,0 +1,19 @@
+@import './utils/variables';
+@import './utils/mixin';
+
+@import './theme/dark';
+
+@import './pages/landing';
+@import './pages/login';
+@import './pages/project';
+
+
+@import './animations/animations';
+
+@import './components/languagePicker';
+@import './components/projectCard';
+@import './components/scrollButton';
+@import './components/animatedHeading';
+@import './components/navigation';
+@import './components/contact';
+@import './components/footer';

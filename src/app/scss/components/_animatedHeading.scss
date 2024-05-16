@@ -1,0 +1,67 @@
+.animationSvg {
+    /* -webkit-animation: svg-anime 3s linear forwards, svg-animeFill 1.5s ease-in-out forwards 3s;
+    animation: svg-anime 3s linear forwards, svg-animeFill 1.5s ease-in-out forwards 3s; */
+    -webkit-animation: svg-anime 2s ease-in forwards, border-anime 1s ease-in forwards 2.2s;
+    animation: svg-anime 2s ease-in forwards, border-anime 1s ease-in forwards 2.2s;
+
+}
+
+.animationSvg path {
+    /* -webkit-animation: svg-anime 3s linear forwards, svg-animeFill 1.5s ease-in-out forwards 3s;
+    animation: svg-anime 3s linear forwards, svg-animeFill 1.5s ease-in-out forwards 3s; */
+    /* fill: none;
+    -webkit-animation: svg-animeFill 2s ease-in forwards 5s;
+    animation: svg-animeFill 2s ease-in forwards 5s; */
+}
+
+.child1 {
+    stroke-dasharray: 308.0223083496094px;
+    stroke-dashoffset: 308.0223083496094px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards;
+    animation: svgPath-anime 1s ease-in forwards;
+}
+
+.child2 {
+    stroke-dasharray: 307.9340515136719px;
+    stroke-dashoffset: 307.9340515136719px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards 1.8s;
+    animation: svgPath-anime 1s ease-in forwards 1.8s;
+}
+
+.child3 {
+    stroke-dasharray: 348.0422058105469px;
+    stroke-dashoffset: 348.0422058105469px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards 1s;
+    animation: svgPath-anime 1s ease-in forwards 1s;
+}
+
+.child4 {
+    stroke-dasharray: 195.6199951171875px;
+    stroke-dashoffset: 195.6199951171875px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards 1.2s;
+    animation: svgPath-anime 1s ease-in forwards 1.2s;
+}
+
+.child5 {
+    stroke-dasharray: 152.22003173828125px;
+    stroke-dashoffset: 152.22003173828125px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards 1.4s;
+    animation: svgPath-anime 1s ease-in forwards 1.4s;
+}
+
+.child6 {
+    stroke-dasharray: 297.19049072265625px;
+    stroke-dashoffset: 297.19049072265625px;
+    -webkit-animation: svgPath-anime 1s ease-in forwards 1.8s;
+    animation: svgPath-anime 1s ease-in forwards 1.8s;
+}
+
+.bootomPart {
+    -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 2.2s;
+    animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 2.2s;
+}
+
+.bootomPartText {
+    -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 2.2s;
+    animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 2.2s;
+}

@@ -1,0 +1,61 @@
+[data-theme='dark'] .main {
+    background: linear-gradient(rgba(43, 43, 43, 0.9), rgba(43, 43, 43, 0.654)), url(/bg3.jpg) center / cover no-repeat
+}
+
+
+[data-theme='dark'] .projectSection {
+    background: $articaDrakBlack;
+    color: white;
+}
+
+[data-theme='dark'] .articaProject {
+    background: $articaDrakBlack;
+    color: white;
+}
+
+[data-theme='dark'] .aboutSection {
+    background: lighten($color: $articaDrakBlack, $amount: 5);
+    color: white;
+}
+
+[data-theme='dark'] .navItems li {
+    color: white;
+}
+
+[data-theme='dark'] .contactSection {
+    background: $articaDrakBlack;
+    color: white;
+}
+
+[data-theme='dark'] .contactFormWrapp {
+    & form {
+        background: lighten($color: $articaDrakBlack, $amount: 5);
+    }
+}
+
+
+[data-theme='dark'] .inptWrapp {
+    & input {
+        background: $articaDrakBlack;
+        color: white;
+
+        &::placeholder {}
+
+    }
+
+    & textarea {
+        background: $articaDrakBlack;
+
+        &::placeholder {}
+    }
+}
+
+[data-theme='dark'] .aFooter {
+    background: lighten($color: $articaDrakBlack, $amount: 5);
+    color: white;
+}
+
+[data-theme='dark'] .footerContentInfo {
+    border-bottom: 1px solid $articaDrakBlack;
+    border-top: 1px solid $articaDrakBlack;
+}
