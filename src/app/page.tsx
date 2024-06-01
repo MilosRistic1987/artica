@@ -8,6 +8,7 @@ import ProjectCard from './components/projectCard'
 import About from './components/aboutSection'
 import Contact from './components/contact'
 import Footer from './components/footer'
+import ArticaLogo from './components/articaLogo'
 
 
 
@@ -16,18 +17,14 @@ import Footer from './components/footer'
 export default function Home() {
 
   const sortedProjects = projects.sort((a, b) => (a.state === b.state ? 0 : a.state === "in progress" ? -1 : 1));
+  console.log(projects.length)
 
   return (
     <main className={styles.wrapp}>
       <ScrollButton />
       <section className='main'>
         <header className='navBar'>
-          <Image
-            src="/articaNew.svg"
-            width={200}
-            height={200}
-            alt="Picture of the author"
-          />
+          <ArticaLogo logoMesaures={{ logoWidth: 200, logoHeight: 200 }} />
           <Navigation />
         </header>
         <InlineStyledSVG />

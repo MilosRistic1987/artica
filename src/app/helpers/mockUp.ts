@@ -15,6 +15,7 @@ export const projects = [
     { name: 'Phoenix Rise Complex', src: '/projects/project6.jpg', state: "finished", type: "Healthcare and Bio-pharmaceutical", clients: [{ id: 990, src: '/clients/institut.png', width: 60 }], location: "Smederevo, Serbia " },
     { name: 'KT Residence', src: '/projects/project7.jpeg', state: "finished", type: "Traffic, Transportation, Roads", clients: [{ id: 989, src: '/clients/bw.jpg', width: 60 }, { id: 988, src: '/clients/eaglehills.png', width: 60 }, { id: 987, src: '/clients/poseidon.png', width: 60 }, { id: 986, src: '/clients/stopshop.png', width: 60 }], location: "Pancevo, Serbia" },
     { name: 'Emerson College – The Little Building', src: '/projects/project8.jpg', state: "finished", type: "Hospitality", clients: [{ id: 980, src: '/clients/arlon.jpg', width: 100 }], location: "Zlatibor, Serbia" },
+    { name: 'Nemanja House', src: '/projects/nemanja.png', state: "in progress", type: "Hospitality", clients: [{ id: 9950, src: '/clients/arlon.jpg', width: 100 }], location: "Kursumlija, Serbia" },
 ]
 
 export const about = [

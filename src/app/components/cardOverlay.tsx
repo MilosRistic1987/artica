@@ -27,7 +27,7 @@ const CardOverlay: React.FC<{ projectData: TProject }> = ({ projectData }) => {
                     height={400}
                     alt="Picture of the author"
                 />
-                {/* <h2 className={stateClassName}>{state}</h2> */}
+                <h2 className={stateClassName}>{state}</h2>
                 <h1>{name}</h1>
             </div>
         </div>
