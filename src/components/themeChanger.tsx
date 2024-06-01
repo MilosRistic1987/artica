@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { useTheme } from 'next-themes';
-import styles from '../page.module.css'
+import styles from '../app/page.module.css'
 
 
 
