@@ -1,7 +1,7 @@
-import { initializeApp,getApps,getApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-console.log("process.env.NEXT_PUBLIC_FIREBASE_API_KEY",process.env.NEXT_PUBLIC_FIREBASE_API_KEY)
+console.log("process.env.NEXT_PUBLIC_FIREBASE_API_KEY", process.env.NEXT_PUBLIC_FIREBASE_API_KEY)
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '',
@@ -12,7 +12,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = !getApps().length ?initializeApp(firebaseConfig):getApp();
-const firebaseAuth=getAuth(firebaseApp)
+const firebaseApp = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const firebaseAuth = getAuth(firebaseApp)
 
-export {firebaseApp,firebaseAuth}
+
+export { firebaseApp, firebaseAuth }

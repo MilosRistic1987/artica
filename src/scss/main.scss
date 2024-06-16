@@ -6,6 +6,8 @@
 @import './pages/landing';
 @import './pages/login';
 @import './pages/project';
+@import './pages/settings';
+@import './pages/projectCreatorSett';
 
 
 @import './animations/animations';
@@ -17,3 +19,8 @@
 @import './components/navigation';
 @import './components/contact';
 @import './components/footer';
+@import './components/articaLoader';
+@import './components/radio';
+@import './components/settings/projectCreator';
+@import './components/settings/sideNav';
+@import './components/settings/fileUploader';

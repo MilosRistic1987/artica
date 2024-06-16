@@ -2,12 +2,18 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
 import styles from '../app/page.module.css'
+import { cookies } from 'next/headers';
 
 
 
 const ThemeChanger = () => {
     const { theme, setTheme } = useTheme()
     console.log("theme", theme)
+    const handleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light'
+        setTheme(newTheme)
+
+    }
     return (
         // <div className="themeWrapp" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
         //     <label>{theme} <span>mode</span></label>
@@ -19,7 +25,7 @@ const ThemeChanger = () => {
         // </div>
         <div className={styles.toggleSwitch} >
             <label className={styles.switchLabel}>
-                <input type='checkbox' className={styles.checkInput} onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
+                <input type='checkbox' className={styles.checkInput} onClick={() => handleTheme()} />
                 <span className={styles.slider}></span>
             </label>
 

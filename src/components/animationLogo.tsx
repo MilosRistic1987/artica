@@ -5,7 +5,7 @@ import styles from '../page.module.css'
 
 const InlineStyledSVG: React.FC = () => {
     const svgStyle = { fill: 'none', stroke: '#231f20', strokeMiterlimit: 10, opacity: 0.2 };
-    const mainSvg = { top: '60%', position: 'absolute', width: '550px', left: '10%', padding: '40px' }
+    const mainSvg = { top: '60%', position: 'absolute', width: '550px', left: '10%', padding: '40px' } as any
     const polygonStyle = { fill: '#231f20' };
     const pathStyle = { fill: "none", stroke: '#231f20', strokeMiterlimit: 10 };
     const textStyle = { fontSize: '30px', fill: '#231f20', fontFamily: 'AgencyFB-Reg, Agency FB', letterSpacing: '0.7em' };

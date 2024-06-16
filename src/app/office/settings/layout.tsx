@@ -1,5 +1,11 @@
 
-import React from 'react';
+"use client"
+import SideNavMain from '@/components/settings/sideNavMain';
+import React, { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from '@/firebase/config';
+import { useRouter } from 'next/navigation';
+
 
 
 
@@ -15,10 +21,30 @@ export default async function SettingsLayout({
 
 }) {
 
+    const [user, setUser] = useState(null);
+    const router = useRouter()
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+            console.log('before,user', user)
+            if (user) {
+                // User is signed in
+                console.log("FBUSERSUBS", user)
+            } else {
+                console.log("nouser")
+                router.push(`/`)
+                // User is signed out
+                // setUser(null);
+            }
+        });
+
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, []);
 
 
     return (
         <main className='settingsWrapp'>
+            <SideNavMain />
             {children}
         </main>
     );

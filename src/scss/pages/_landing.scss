@@ -7,12 +7,22 @@
     align-items: center;
     padding: 6rem;
     min-height: 100vh;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.654)), url('/bg3.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.654)), center/cover no-repeat;
     /* background:url('/bg4.jpg') center/cover no-repeat; */
     /* background-size: cover; */
     /* background-position: center; */
+    //background: (rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.654));
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
     -webkit-animation: bg-pan-bl 108s linear infinite;
     animation: bg-pan-bl 108s linear infinite;
+}
+
+
+.animationMain {
+    -webkit-animation: bg-pan-bl 88s linear infinite;
+    animation: bg-pan-bl 88s linear infinite;
 }
 
 

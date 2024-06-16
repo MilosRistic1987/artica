@@ -1,0 +1,90 @@
+.sidenav {
+    // background: lighten($color: $articaMainBlue, $amount: 5);
+    background: white;
+    color: black;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 20% 30% 50%;
+}
+
+.settingsNav {
+    display: flex;
+    align-items: center;
+
+    & ul {
+        width: 100%;
+    }
+
+}
+
+.navInfo {
+    display: grid;
+    grid-template-rows: auto 20%;
+
+    & svg {
+        width: 4rem;
+    }
+}
+
+.navImageWrapp {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: auto 50%;
+
+    & .navImage {
+        position: relative;
+
+        & img {
+            outline: 1px solid $articaMainBlue;
+            outline-offset: 10px;
+
+        }
+    }
+}
+
+.settNavItem {
+    background-color: darken($color: white, $amount: 5);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 200;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+
+    // color: white;
+
+    & svg {
+        width: 2rem;
+        margin-right: 0.5rem;
+    }
+}
+
+.navInfoContent {
+    @include flexCenter;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.navHomeWrapp {
+    @include flexCenter;
+
+    & svg {
+        &:hover {
+            outline: 1px solid $articaMainBlue;
+            outline-offset: 10px;
+        }
+    }
+}
+
+.avatar {
+    @include flexCenter;
+
+    & img {
+        border-radius: 50%;
+        outline: 2px solid $articaMainBlue;
+        outline-offset: 4px;
+        object-fit: cover;
+        border: 10px solid $articaDrakBlack;
+    }
+}

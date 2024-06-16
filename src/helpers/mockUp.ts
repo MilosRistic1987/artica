@@ -1,3 +1,4 @@
+import { TProjectFB } from '@/types/types';
 import {
     BuildingOfficeIcon,
     MapPinIcon,
@@ -63,3 +64,5 @@ export const footerData = [
 ]
 
 export const partners = [{ id: 222, imgSrc: "/partners/aromaI.png", name: "aroma", width: 150 }, { id: 223, imgSrc: "/partners/delhaize.png", name: "delhaize", width: 50 }]
+
+export const bbb: TProjectFB[] = []
