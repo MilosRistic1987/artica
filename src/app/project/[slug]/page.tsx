@@ -1,7 +1,12 @@
 
-import ProjectNav from "@/app/components/projectNav";
-import { projects } from "@/app/helpers/mockUp";
+import ProjectNav from "@/components/projectNav";
+import { projects } from "@/helpers/mockUp";
 import Image from 'next/image';
+
+
+
+
+
 
 
 export default async function Product({ params }: { params: { slug: string } }) {

@@ -2,13 +2,36 @@
 "use client"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { FormEvent } from 'react';
+import { signInWithEmailAndPassword  } from "firebase/auth";
+import { firebaseAuth } from '@/firebase/config';
+
 
 
 
 export default function Office() {
     const router = useRouter()
+
+    const handleSubmit =async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const formValues: Record<string, string> = {};
+        formData.forEach((value, name) => {
+          formValues[name] = value.toString();
+        });
+        const {email, password}=formValues
+        try {
+            const res=await signInWithEmailAndPassword(firebaseAuth, email, password)
+            console.log("resauth",res.user)
+            res.user && router.push('/office/settings')
+        } catch (error) {
+           console.error(error);
+           //TO DO
+        // ERROR MSG DISPLAY TOAST OR SOMETHING LIKE THIS
+        }
+      };
     return (
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={handleSubmit}>
             <section className='logoSection'>
                 <Image
                     src="/articaNew.svg"
@@ -27,12 +50,11 @@ export default function Office() {
                     <label>Login here</label>
                 </article>
                 <label htmlFor="username" className='loginLbl'>Username</label>
-                <input className='loginInputs' type="text" placeholder="Email or Phone" id="username" />
+                <input className='loginInputs' type="text" placeholder="Email or Phone" id="username"  name='email' />
                 <label htmlFor="password" className='loginLbl'>Password</label>
-                <input className='loginInputs' type="password" placeholder="Password" id="password" />
-                <button className='loginBtn'>Log In</button>
+                <input className='loginInputs' type="password" placeholder="Password" id="password" name='password' />
+                <button className='loginBtn' type='submit'>Log In</button>
             </section>
-
         </form>
     );
 }
