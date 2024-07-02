@@ -6,6 +6,7 @@ import {
 import Image from 'next/image'
 import { getPageImage } from '@/firebase/actions';
 import { ImageBucket } from '@/types/types';
+import { useEffect, useState } from 'react';
 
 
 
@@ -13,20 +14,34 @@ import { ImageBucket } from '@/types/types';
 
 
 
-const NavInfo: React.FC = async () => {
+const NavInfo: React.FC = () => {
 
-    const logoSrc = await getPageImage(ImageBucket.BACKGROUND, 'articaWall.jpg') as string
+    const [logoSrc, setLogoSrc] = useState<string>('')
+
+    useEffect(() => {
+        const fetchImage = async () => {
+            try {
+                const src = await getPageImage(ImageBucket.BACKGROUND, 'articaWall') as string;
+                setLogoSrc(src);
+            } catch (error) {
+                console.error('Error fetching image:', error);
+            }
+        };
+
+        fetchImage();
+    }, []);
+
 
     return (
         <section className='navInfo'>
             <div className='navImageWrapp'>
                 <div className='navImage'>
-                    <Image
+                    {logoSrc && <Image
                         src={logoSrc}
-                        layout='fill'
+                        fill
                         alt="Artica International"
 
-                    />
+                    />}
                 </div>
                 <div className='navInfoContent'>
                     <label>Number of projects:<span>10</span></label>

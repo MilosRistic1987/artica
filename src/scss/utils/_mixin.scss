@@ -34,9 +34,9 @@
 
 }
 
-@mixin addButton {
+@mixin addButton($width) {
     background: white;
-    width: 10rem;
+    width: $width;
     margin: 0.5rem 0;
     cursor: pointer;
     border: none;

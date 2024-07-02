@@ -9,7 +9,7 @@ interface FileUploaderProps {
     id: string
 }
 
-const FileUploader: React.FC<FileUploaderProps> = ({ setFiles, size = 7, objKey, id }) => {
+const FileUploader: React.FC<FileUploaderProps> = ({ setFiles, size = 13, objKey, id }) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [preview, setPreview] = useState<string | null>(null);
 
@@ -32,7 +32,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({ setFiles, size = 7, objKey,
         }
     };
 
-    const style = { width: `${size}rem`, height: `${size}rem` }
+    const imageStyle = { width: `${size}rem`, height: `${size}rem` }
+    const style = { width: `${Math.round(size / 1.5)}rem`, height: `${Math.round(size / 1.5)}rem` }
 
     return (
         <div className='fileWrapper'>
@@ -44,7 +45,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({ setFiles, size = 7, objKey,
                 />
                 <PhotoIcon className="icon" />
             </div>
-            {preview && <div className='filePreview' style={style}>
+            {preview && <div className='filePreview' style={imageStyle}>
                 <Image
                     src={preview as string}
                     layout='fill'

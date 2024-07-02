@@ -1,7 +1,7 @@
 "use client"
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import FileUploader from './fileUploader';
-import { uploadFile } from '@/firebase/actions';
+import { createFBProject, uploadFile } from '@/firebase/actions';
 import {
     RocketLaunchIcon,
 } from '@heroicons/react/24/solid';
@@ -9,9 +9,11 @@ import {
     SquaresPlusIcon,
     MinusCircleIcon
 } from '@heroicons/react/24/outline';
-import { expandFilesWithLink, generateId } from '@/helpers/utils';
-import { FileObject, ImageBucket, ImageSubBucket, TClinetLink } from '@/types/types';
+import { expandFilesWithLink, generateId, getStatusObject, separateUrls } from '@/helpers/utils';
+import { FileObject, ImageBucket, ImageSubBucket, Language, TClients, TIdVal, TLocale, TUploadedUrl } from '@/types/types';
 import ArticaLoader from '../articaLoader';
+import TagManager from '../tagManager';
+
 
 
 interface FileInputEvent extends ChangeEvent<HTMLInputElement> {
@@ -26,37 +28,17 @@ interface Tag {
 
 
 const ProjectCreator: React.FC = () => {
-    const [title, setTitle] = useState<string>('');
-    const [serbianSubtitle, setSerbianSubtitle] = useState<string>('');
-    const [englishSubtitle, setEnglishSubtitle] = useState<string>('');
-    const [image, setImage] = useState<File | null>(null);
-    const [tags, setTags] = useState<Tag[]>([{ serbian: '', english: '' }]);
-    const [clients, setClients] = useState<string[]>([]);
-    const [clientLinks, setClientLinks] = useState<TClinetLink[]>([])
-    const [file, setFile] = useState<File | null>(null);
+    const [title, setTitle] = useState<TLocale>({ en: '', rs: '', id: generateId() });
+    const [projectType, setProjectType] = useState<TLocale>({ en: '', rs: '', id: generateId() });
+    const [projectLocation, setProjectLocation] = useState<TLocale>({ en: '', rs: '', id: generateId() });
+
+    const [clientLinks, setClientLinks] = useState<TIdVal[]>([])
     const [files, setFiles] = useState<FileObject[]>([]);
-    const dialogRef = useRef<HTMLDialogElement>(null);
+    const [developmentTags, setDevelopmentTags] = useState<TLocale[]>([])
+    const [managmentTags, setManagmentTags] = useState<TLocale[]>([])
     const [projectStatus, setProjectStatus] = useState<string>('inprogress')
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
-    const handleImageUpload = (e: FileInputEvent, setImageFn: React.Dispatch<React.SetStateAction<File | null>>) => {
-        setImageFn(e.target.files?.[0] || null);
-    };
-
-    const handleTagsChange = (index: number, key: keyof Tag, value: string) => {
-        const newTags = [...tags];
-        newTags[index][key] = value;
-        setTags(newTags);
-    };
-
-    const handleAddTag = () => {
-        setTags([...tags, { serbian: '', english: '' }]);
-    };
-
-    // const handleClientImageUpload = (index: number, file: File | null) => {
-    //     const newClients = [...clients];
-    //     newClients[index] = file;
-    //     setClients(newClients);
-    // };
 
     const handleFileChange = (file: File, bucket: string, id: string) => {
         const newFileObject: FileObject = {
@@ -67,15 +49,13 @@ const ProjectCreator: React.FC = () => {
         setFiles(prevFiles => [...prevFiles, newFileObject]);
     };
 
-    const handleClientsLink = (newClient: TClinetLink) => {
+    const handleClientsLink = (newClient: TIdVal) => {
         setClientLinks(prevClientLinks =>
             prevClientLinks.map(clientLink =>
                 clientLink.id === newClient.id ? { ...clientLink, value: newClient.value } : clientLink
             )
         );
     };
-
-    console.log(clientLinks, "clientLinks")
 
 
     const handleAddClient = () => {
@@ -84,29 +64,33 @@ const ProjectCreator: React.FC = () => {
 
     const createProject = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("dialogRef.current", dialogRef.current)
         dialogRef.current?.showModal()
         const expandedFiles = expandFilesWithLink(files, clientLinks)
         const uploadPromises = expandedFiles.map((promise) => {
             const path = promise.bucket === 'project' ? ImageSubBucket.MAIN : ImageSubBucket.CLIENTS
-            return uploadFile(promise.file, `${ImageBucket.PROJECTS}/${title}/${path}`, promise.file.name, promise.link);
+            return uploadFile(promise.file, `${ImageBucket.PROJECTS}/${title[Language.ENGLISH]}/${path}`, promise.file.name, promise.link);
         });
         try {
             const uploadedUrls = await Promise.all(uploadPromises);
-            uploadedUrls.map((url, index) => {
-                console.log(`Uploaded file ${index + 1} to ${url.downloadURL} and path is ${url.fullPath} `);
-                return null; // Ensuring a return value in map callback
-            });
-            console.log(uploadedUrls, ' uploadedUrls')
+            const { clientArray, mainArray } = separateUrls(uploadedUrls)
+            const state = getStatusObject(projectStatus)
+            const project = { name: title, state, src: mainArray[0], clients: clientArray, type: projectType, location: projectLocation, managmentTags, developmentTags }
+            console.log("projectforupload", project)
+            const result = await createFBProject(project)
+            setTimeout(() => {
+                dialogRef.current?.close()
+            }, 1000);
         } catch (error) {
             console.error('Error uploading files:', error);
         }
-        console.log("uploadPromises", uploadPromises)
+
+
+        // { name: 'SkyLoom Tower', src: '/projects/project1.jpg', state: "in progress", type: "Residential", clients: [{ id: 991, src: '/clients/globalfinance.jpg', width: 160 }], location: "Kragujevac, Serbia" },
         // const imageUrl = await uploadFile(file, 'product', 'projekat1')
         // console.log("imageUrl", imageUrl)
     }
 
-
+    console.log("projecStatus", projectStatus)
 
     return (
         <form className="form" onSubmit={createProject}>
@@ -119,18 +103,25 @@ const ProjectCreator: React.FC = () => {
                             required
                             className='articaInpt'
                             type="text"
-                            id="title"
                             placeholder='Project Title'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            value={title[Language.ENGLISH]}
+                            onChange={(e) => setTitle((prevTitle) => ({
+                                ...prevTitle,
+                                [Language.ENGLISH]: e.target.value
+                            }))}
+
                         />
                         <input
                             className='articaInpt'
                             type="text"
-                            id="title"
+                            required
                             placeholder='Naziv Projekta'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            value={title[Language.SERBIAN]}
+                            onChange={(e) => setTitle((prevTitle) => ({
+                                ...prevTitle,
+                                [Language.SERBIAN]: e.target.value
+                            }))}
+
                         />
                     </div>
                 </div>
@@ -139,19 +130,25 @@ const ProjectCreator: React.FC = () => {
                     <div className='inpDividerWrapp'>
                         <input
                             className='articaInpt'
+                            required
                             type="text"
-                            id="serbianSubtitle"
                             placeholder='Project Type'
-                            value={serbianSubtitle}
-                            onChange={(e) => setSerbianSubtitle(e.target.value)}
+                            value={projectType[Language.ENGLISH]}
+                            onChange={(e) => setProjectType((prevType) => ({
+                                ...prevType,
+                                [Language.ENGLISH]: e.target.value
+                            }))}
                         />
                         <input
                             className='articaInpt'
                             type="text"
-                            id="serbianSubtitle"
+                            required
                             placeholder='Tip Projekta'
-                            value={serbianSubtitle}
-                            onChange={(e) => setSerbianSubtitle(e.target.value)}
+                            value={projectType[Language.SERBIAN]}
+                            onChange={(e) => setProjectType((prevType) => ({
+                                ...prevType,
+                                [Language.SERBIAN]: e.target.value
+                            }))}
                         />
 
                     </div>
@@ -164,18 +161,24 @@ const ProjectCreator: React.FC = () => {
                         <input
                             className='articaInpt'
                             type="text"
-                            id="title"
+                            required
                             placeholder='Project Location'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            value={projectLocation[Language.ENGLISH]}
+                            onChange={(e) => setProjectLocation((prevLocation) => ({
+                                ...prevLocation,
+                                [Language.ENGLISH]: e.target.value
+                            }))}
                         />
                         <input
                             className='articaInpt'
                             type="text"
-                            id="title"
+                            required
                             placeholder='Lokacija Projekta'
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            value={projectLocation[Language.SERBIAN]}
+                            onChange={(e) => setProjectLocation((prevLocation) => ({
+                                ...prevLocation,
+                                [Language.SERBIAN]: e.target.value
+                            }))}
                         />
                     </div>
                 </div>
@@ -207,28 +210,7 @@ const ProjectCreator: React.FC = () => {
                 <label htmlFor="image">Project Image:</label>
                 <FileUploader setFiles={handleFileChange} objKey='project' id={generateId()} />
             </div>
-            <div className="form-group">
-                <label>Tags:</label>
-                {tags.map((tag, index) => (
-                    <div key={index} className="tag-input">
-                        <input
-                            type="text"
-                            placeholder="Serbian Tag"
-                            value={tag.serbian}
-                            onChange={(e) => handleTagsChange(index, 'serbian', e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            placeholder="English Tag"
-                            value={tag.english}
-                            onChange={(e) => handleTagsChange(index, 'english', e.target.value)}
-                        />
-                    </div>
-                ))}
-                <button type="button" onClick={handleAddTag}>
-                    Add Tag
-                </button>
-            </div>
+            <TagManager developmentTags={developmentTags} managmentTags={managmentTags} setManagmentTags={setManagmentTags} setDevelopmentTags={setDevelopmentTags} />
             <div className="">
                 <label>Clients:</label>
                 {clientLinks.map((client, index) => (

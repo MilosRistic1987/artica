@@ -15,6 +15,11 @@ export enum ImageSubBucket {
     CLIENTS = 'clients'
 }
 
+export enum TagType {
+    MANAGMENT = 'managment',
+    DEVELOPMENT = 'development'
+}
+
 export type TProjectFB = {
     name: string
     id: string
@@ -26,9 +31,44 @@ export interface FileObject {
     file: File;
 }
 
-export type TClinetLink = {
+export type TIdVal = {
     id: string;
     value: string
+}
+
+export enum Language {
+    ENGLISH = 'en',
+    SERBIAN = 'rs'
+}
+
+export type TLocale = {
+    en: string;
+    rs: string;
+    id: string;
+}
+
+export type TAvatar = {
+    iconSrc: string
+    displayName: string
+}
+
+export enum ProjectStatus {
+    COMPLETED = 'completed',
+    INPROGRESS = 'inprogress',
+    // Pending = 'pending',
+    // Add other statuses as needed
+}
+
+export type TUploadedUrl = {
+    downloadURL: string;
+    fullPath: string;
+    link: string | undefined;
+};
+
+export type TClients = {
+    src: string;
+    link: string;
+    id: string
 }
 
 export type ClientFileWithLink = FileObject & { link?: string };

@@ -1,10 +1,14 @@
 "use client"
 
+import BGChanger from "@/components/settings/bgChanger"
+import Profile from "@/components/settings/profile"
 import ProjectCreator from "@/components/settings/projectCreator"
-import { createProject, getPageImage } from "@/firebase/actions"
+import { createFBProject, getPageImage } from "@/firebase/actions"
 import { firebaseAuth } from "@/firebase/config"
 import { ImageBucket } from "@/types/types"
-import { signOut, getAuth, updateProfile } from "firebase/auth"
+import { signOut, getAuth, updateProfile, onAuthStateChanged } from "firebase/auth"
+import { useRouter } from "next/navigation"
+
 import { useEffect } from "react"
 
 
@@ -27,48 +31,29 @@ export default function Settings() {
   // }, []);
 
 
+
+
   const generateProject = () => {
-    createProject(articaProject)
+    createFBProject(articaProject)
   }
 
-  const logout = () => {
-    signOut(firebaseAuth).then((res) => {
-      // Sign-out successful.
-      console.log(res)
-    }).catch((error) => {
-      console.log(error)
-      // An error happened.
-    });
-  }
 
-  const update = async () => {
-    const uid = "pDLNtGgo5pZq6nlQF9Ud5lEypOI3"
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
-      try {
-        await updateProfile(user, {
-          displayName: "riksha",
-          photoURL: "https://firebasestorage.googleapis.com/v0/b/artica-international.appspot.com/o/users%2Fmilos%2Favatar.jpg?alt=media&token=54f2ee2b-7cab-49e7-8643-61f8f8c72121"
-        });
-        console.log('Profile updated successfully');
-      } catch (error) {
-        console.error('Error updating profile:', error);
-      }
-    } else {
-      console.error('No user is signed in');
-    }
-  };
+
+
 
   return (
-    <main>
+    <main className="generalSettWrapp">
       {/* seetings work !
       <button onClick={() => generateProject()}>create project</button> */}
       {/* <ProjectCreator /> */}
 
-      <button onClick={logout}>logout</button>
 
-      <button onClick={update}>update</button>
+      {/* 
+      <button onClick={update}>update</button> */}
+
+      <Profile />
+      <BGChanger />
+      <section></section>
 
     </main >
   )

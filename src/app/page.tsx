@@ -28,7 +28,7 @@ export default async function Home() {
 
 
 
-  const articaLandingBg = await getPageImage(ImageBucket.BACKGROUND, 'articaWall.jpg');
+  const articaLandingBg = await getPageImage(ImageBucket.BACKGROUND, 'articaWall');
 
   return (
     <main className={styles.wrapp}>

@@ -1,4 +1,4 @@
-import { Collestions, TProjectFB, } from "@/types/types";
+import { Collestions, Language, TProjectFB, } from "@/types/types";
 import { firebaseApp } from "./config";
 import { getFirestore, collection, getDocs, getDoc, onSnapshot, query, where, addDoc, setDoc, doc } from "firebase/firestore";
 
@@ -28,10 +28,11 @@ import { ProjecService } from "./observable";
 
 
 
-export const createProject = async (project: any) => {
+export const createFBProject = async (project: any) => {
     const fireStore = getFirestore(firebaseApp)
-    const result = await setDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, project.name), project);
-    console.log("result", result)
+    console.log("fireStore", project)
+    const result = await setDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, project.name[Language.ENGLISH]), project);
+    return result
 }
 
 
@@ -56,7 +57,6 @@ export const getPageImage = async (folderPath: string, imagePath: string) => {
 
     try {
         const url = await getDownloadURL(starsRef)
-        console.log(url, "FIREBASESTORAGE")
         return url
     } catch (error: any) {
         // A full list of error codes is available at
