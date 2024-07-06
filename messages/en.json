@@ -60,6 +60,30 @@
         "content": "<div className='aboutIIWrapp'><p>Our values guide all of our actions. We strongly believe in integrity and transparency.</p><p>We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients.</p><p>We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.</p><p>We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them.</p></div>"
       }
     }
+  },
+  "Contact": {
+    "greeting": {
+      "sec1": "Let's talk about",
+      "sec2": "everything!"
+    },
+    "heading": "Contact Us",
+    "nameInput": {
+      "label": "Full name",
+      "placeholder": "name"
+    },
+    "emailInput": {
+      "label": "Email Address",
+      "placeholder": "email"
+    },
+    "subjectInput": {
+      "label": "Subject",
+      "placeholder": "subject"
+    },
+    "messageInput": {
+      "label": "Message",
+      "placeholder": "message"
+    },
+    "button": "Send Message"
   }
     
   }

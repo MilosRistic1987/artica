@@ -64,5 +64,29 @@
         }
       
       
+    },
+    "Contact": {
+      "greeting": {
+        "sec1": "Razgovarajmo o",
+        "sec2": "svemu!"
+      },
+      "heading": "Kontaktirajte nas",
+      "nameInput": {
+        "label": "Puno ime",
+        "placeholder": "ime"
+      },
+      "emailInput": {
+        "label": "Email adresa",
+        "placeholder": "email"
+      },
+      "subjectInput": {
+        "label": "Predmet",
+        "placeholder": "predmet"
+      },
+      "messageInput": {
+        "label": "Poruka",
+        "placeholder": "poruka"
+      },
+      "button": "Pošalji poruku"
     }
   }

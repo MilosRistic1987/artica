@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image'
 import ArticaLogo from './articaLogo';
 
 const ProjectNav: React.FC<{ projectName: string }> = ({ projectName }) => {
