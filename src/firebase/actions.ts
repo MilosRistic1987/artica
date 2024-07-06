@@ -30,7 +30,6 @@ import { ProjecService } from "./observable";
 
 export const createFBProject = async (project: any) => {
     const fireStore = getFirestore(firebaseApp)
-    console.log("fireStore", project)
     const result = await setDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, project.name[Language.ENGLISH]), project);
     return result
 }
@@ -39,15 +38,25 @@ export const createFBProject = async (project: any) => {
 export const getProjects = async () => {
     const fireStore = getFirestore(firebaseApp)
     const querySnapshot = await getDocs(collection(fireStore, Collestions.ARTICA_PROJECTS));
-    let data: TProjectFB[] = [];
+    let data: any[] = [];
     querySnapshot.forEach((doc) => {
-
-        data.push({
-            id: doc.id, name: doc.data().name
-        });
+        data.push(doc.data());
     });
 
     return data
+}
+
+export const getProjectByName = async (name: string) => {
+    const fireStore = getFirestore(firebaseApp)
+    const docRef = doc(fireStore, Collestions.ARTICA_PROJECTS, name);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data()
+    } else {
+        // docSnap.data() will be undefined in this case
+        return null
+    }
 }
 
 

@@ -26,28 +26,29 @@ export const about = [
     { content: "In accordance with our vision and mission, strong intention in service delivery, integration and systematically organizational development, Artica International has been constantly entrusted by clients, enlarging its greater value in serviceability whether be high buildings, supermarkets, large-scale projects, hypermarkets, and other large-scale construction projects where customers include the government and private sectors.", id: 4 },
 ]
 
-export const aboutII = [
-    { content: ["We aspire to be recognized as the premier engineering, construction, and project management company."], heading: 'Vision', id: 11 },
-    {
-        content: ["To be company of record for full service in construction industry, using our vision and inner focus to create functionall works of art",
-            "Recognized for developing and embracing high quality technologies and processes",
-            "Offering a more diversified set of innovative services",
-            "Serving a broader geographic market",
-            "Responsive to the needs of our clients, our employees and our communities "
-        ],
-        heading: 'Mision',
-        id: 12
-    },
-    {
-        content: ["Our values guide all of our actions. We strongly believe in integrity and transparency.",
-            "We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients.",
-            "We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.",
-            "We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them.",
-        ],
-        heading: 'Values',
-        id: 13
-    },
-]
+// export const aboutII = [
+//     { content: ["We aspire to be recognized as the premier engineering, construction, and project management company."], heading: 'Vision', id: 11 },
+//     {
+//         content: ["To be company of record for full service in construction industry, using our vision and inner focus to create functionall works of art",
+//             "Recognized for developing and embracing high quality technologies and processes",
+//             "Offering a more diversified set of innovative services",
+//             "Serving a broader geographic market",
+//             "Responsive to the needs of our clients, our employees and our communities "
+//         ],
+//         heading: 'Mision',
+//         id: 12
+//     },
+//     {
+//         content: ["Our values guide all of our actions. We strongly believe in integrity and transparency.",
+//             "We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients.",
+//             "We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.",
+//             "We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them.",
+//         ],
+//         heading: 'Values',
+//         id: 13
+//     },
+// ]
+export const about2 = ['vision', 'mission', 'values']
 
 
 
@@ -59,7 +60,7 @@ export const footerData = [
     },
     { name: "location", icon: MapPinIcon, id: 556, content: ["Bulevar Nikole Tesle 48", "11070 Novi Beograd, Serbia"] },
     { name: "email", icon: EnvelopeIcon, id: 557, content: ["office@artica.rs", "www.artica.rs "] },
-    { name: "contact person", icon: UserIcon, id: 558, content: ["GENERAL MANAGER", "Nemanja Luković", "+381 (0)11 3111 325", "+381 (0)11 630 5 630", "+381 63 646 070", "nemanja.lukovic@artica.rs"] },
+    { name: "contact_person", icon: UserIcon, id: 558, content: ["GENERAL MANAGER", "Nemanja Luković", "+381 (0)11 3111 325", "+381 (0)11 630 5 630", "+381 63 646 070", "nemanja.lukovic@artica.rs"] },
 
 ]
 

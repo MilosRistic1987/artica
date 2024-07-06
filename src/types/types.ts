@@ -8,6 +8,25 @@ export enum ImageBucket {
     PROJECTS = 'projects'
 }
 
+export interface LocalizationProps {
+    params: {
+        locale: string;
+    };
+}
+
+export interface NavigationProps {
+    locale: string;
+}
+
+export interface NavLabel {
+    en: string;
+    rs: string;
+};
+
+export interface NavItem {
+    navLabel: NavLabel
+    path: string;
+}
 
 
 export enum ImageSubBucket {
@@ -35,6 +54,10 @@ export type TIdVal = {
     id: string;
     value: string
 }
+
+export type TGroupedProjects = {
+    [key: string]: number;
+};
 
 export enum Language {
     ENGLISH = 'en',

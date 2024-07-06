@@ -1,0 +1,65 @@
+{
+    "Index": {
+      "title": "Hello world!"
+    },
+    "Footer":{
+        "company": {
+          "name": "Company",
+          "content": [
+            "ARTICA INTERNATIONAL doo",
+            "MB: 20631295",
+            "PIB: 106560818",
+            "+381 (0)11 630 5 630",
+            "+381 (0)11 3111 325"
+          ]
+        },
+        "location": {
+          "name": "Location",
+          "content": [
+            "Nikola Tesla Boulevard 48",
+            "11070 Novi Beograd, Serbia"
+          ]
+        },
+        "email": {
+          "name": "Email",
+          "content": [
+            "office@artica.rs",
+            "www.artica.rs"
+          ]
+        },
+        "contact_person": {
+          "name": "Contact Person",
+          "content": [
+            "GENERAL MANAGER",
+            "Nemanja Luković",
+            "+381 (0)11 3111 325",
+            "+381 (0)11 630 5 630",
+            "+381 63 646 070",
+            "nemanja.lukovic@artica.rs"
+          ]
+        }
+    },
+   "About": {
+    "about": [
+      "Artica International is a modern company, founded in 2010, focused on consulting, management, building design and construction.",
+      "The company has earned recognition for undertaking large, complex projects, fostering innovation, embracing emerging technologies, and making a difference for their clients, employees and community.",
+      "Our comprehensive services capture all phases of the building development process from providing assistance in finding suitable sites, development of concept, preliminary and final designs, through planning, budgeting, scheduling and permitting to expert and design supervision.",
+      "In accordance with our vision and mission, strong intention in service delivery, integration and systematically organizational development, Artica International has been constantly entrusted by clients, enlarging its greater value in serviceability whether be high buildings, supermarkets, large-scale projects, hypermarkets, and other large-scale construction projects where customers include the government and private sectors."
+    ],
+    "aboutII": {
+      "vision": {
+        "name": "Vision",
+        "content": "<p>We aspire to be recognized as the premier engineering, construction, and project management company.</p>"
+      },
+      "mission": {
+        "name": "Mission",
+        "content": "<div className='aboutIIWrapp'><p>To be company of record for full service in construction industry, using our vision and inner focus to create functional works of art</p><p>Recognized for developing and embracing high quality technologies and processes</p><p>Offering a more diversified set of innovative services</p><p>Serving a broader geographic market</p><p>Responsive to the needs of our clients, our employees and our communities</p></div>"
+      },
+      "values": {
+        "name": "Values",
+        "content": "<div className='aboutIIWrapp'><p>Our values guide all of our actions. We strongly believe in integrity and transparency.</p><p>We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients.</p><p>We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.</p><p>We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them.</p></div>"
+      }
+    }
+  }
+    
+  }
