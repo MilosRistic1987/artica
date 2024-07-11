@@ -28,7 +28,7 @@ export default async function RootLayout({
 
   const theme = cookies().get("__theme__")?.value || "system";
   const messages = await getMessages();
-  console.log(locale, 'ROOTLAYOUT')
+  //console.log(locale, 'ROOTLAYOUT')
   return (
     <html lang={locale} style={theme !== "system" ? { colorScheme: theme } : {}}>
       <body className={inter.className}>

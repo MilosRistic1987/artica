@@ -83,7 +83,8 @@
       "label": "Message",
       "placeholder": "message"
     },
-    "button": "Send Message"
+    "button": "Send Message",
+    "successfulSentMessage": "Your email message has been sent successfully"
   },
   "Project":{
     "footer":"Clients :"

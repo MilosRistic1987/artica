@@ -87,7 +87,8 @@
         "label": "Poruka",
         "placeholder": "poruka"
       },
-      "button": "Pošalji poruku"
+      "button": "Pošalji poruku",
+      "successfulSentMessage": "Vaša e-poruka je uspešno poslata"
     },
     "Project":{
       "footer":"Klijenti :"

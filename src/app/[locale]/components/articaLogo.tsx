@@ -12,7 +12,7 @@ export type TLogoMeasures = {
 const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures }> = ({ logoMesaures }) => {
     const { logoWidth, logoHeight } = logoMesaures
     const { theme, setTheme } = useTheme()
-    console.log(theme)
+    //console.log(theme)
     const router = useRouter()
     const logoSrc = theme === 'dark' ? '/articaNewDark.svg' : '/articaNew.svg'
 
