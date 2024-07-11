@@ -1,8 +1,11 @@
 
 import ProjectNav from "@/app/[locale]/components/projectNav";
 import { getProjectByName } from "@/firebase/actions";
-import { projects } from "@/helpers/mockUp";
 import Image from 'next/image';
+import Clients from "../../components/clients";
+import {
+    StarIcon
+} from '@heroicons/react/24/solid';
 
 
 
@@ -17,6 +20,7 @@ export default async function Product({ params }: { params: { slug: string, loca
     const projectData = await getProjectByName(dencodedParam)
 
 
+
     console.log("projectData", projectData)
 
     return (
@@ -28,7 +32,14 @@ export default async function Product({ params }: { params: { slug: string, loca
                         <h1>{projectData?.type[params.locale]}</h1>
                         <h3>{projectData?.location[params.locale]}</h3>
                     </div>
-                    <div></div>
+                    <div className="tagsWrapp">
+                        <aside>
+                            {projectData?.developmentTags.map((tag: any) => <div key={tag.id} className="tagList"><StarIcon /><label >{tag[params.locale]}</label></div>)}
+                        </aside>
+                        <aside>
+                            {projectData?.managmentTags.map((tag: any) => <div key={tag.id} className="tagList"><StarIcon /><label key={tag.id}>{tag[params.locale]}</label></div>)}
+                        </aside>
+                    </div>
                 </article>
                 <article style={{ position: 'relative', padding: '2rem' }} className="test">
                     <Image
@@ -42,17 +53,8 @@ export default async function Product({ params }: { params: { slug: string, loca
                     <section className="insetBorder"></section>
                 </article>
             </section>
-            <section className="clientsWrapp">
-                <article className="clientsHeadingWrapp"><h1>clients :</h1></article>
-                {/* <article className="clientsLogoWrapp">{projectData?.clients.map(client => <Image
-                    key={client.id}
-                    src={`${client?.src}`}
-                    width={client.width}
-                    height={60}
-                    alt="Artica clients"
-                    className="clientLogo"
-                />)}</article> */}
-            </section>
+            <Clients projectData={projectData} />
+
         </main>
     )
 }

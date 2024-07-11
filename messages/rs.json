@@ -88,5 +88,8 @@
         "placeholder": "poruka"
       },
       "button": "Pošalji poruku"
+    },
+    "Project":{
+      "footer":"Klijenti :"
     }
   }

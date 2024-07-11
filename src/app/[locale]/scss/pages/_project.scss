@@ -7,7 +7,8 @@
 
 .projectMain {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2.5fr;
+    column-gap: 1rem;
 }
 
 .projectNav {
@@ -29,8 +30,15 @@
     display: grid;
     grid-template-rows: 20% 80%;
 
+
     & .heading {
         text-transform: uppercase;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        // padding: 0 2rem;
 
         & h1 {
             color: $articaMainBlue;
@@ -75,6 +83,68 @@
     gap: 2rem;
 }
 
+.tagsWrapp {
+    display: grid;
+    grid-template-rows: 0.8fr 1fr;
+    // padding: 1rem 2rem;
+
+    & aside {
+        // @include flexCenter;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        text-align: justify;
+        text-transform: uppercase;
+        font-weight: 200;
+        // padding: 1rem;
+
+
+        &:first-child {
+            border-bottom: 2px solid $articaMainBlue;
+        }
+
+        & .tagList {
+            display: flex;
+            // border-bottom: 1px solid $articaLightGreen;
+            // width: 80%;
+
+            & label {
+                width: 100%;
+                // margin: 0.5rem 0;
+                // font-size: 1.3rem;
+                padding: 0.2rem;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            & svg {
+
+                color: $articaLightGreen ;
+                width: 1.5rem;
+                margin-right: 2rem;
+
+            }
+        }
+
+
+    }
+}
+
+
+.cilentWrapper {
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+
+    & img {
+        object-fit: contain;
+    }
+}
+
 .clientLogo {
     -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.2s;
     animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.2s;
@@ -83,6 +153,7 @@
 .clientsHeadingWrapp {
     display: flex;
     align-items: center;
+    // padding: 0 2rem;
 
     & h1 {
         font-size: 2rem;
