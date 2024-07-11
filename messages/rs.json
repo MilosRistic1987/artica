@@ -87,6 +87,7 @@
         "label": "Poruka",
         "placeholder": "poruka"
       },
-      "button": "Pošalji poruku"
+      "button": "Pošalji poruku",
+      "successfulSentMessage": "Poruka je uspesno poslata."
     }
   }

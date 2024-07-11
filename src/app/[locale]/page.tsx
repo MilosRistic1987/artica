@@ -11,31 +11,30 @@ import Footer from "./components/footer";
 import ArticaLogo from "@/app/[locale]/components/articaLogo";
 import { getPageImage, getProjects } from "@/firebase/actions";
 import { ImageBucket, LocalizationProps } from "@/types/types";
-
-
+import { Toaster } from "react-hot-toast";
 
 export const revalidate = 0;
 
 export default async function Home({ params: { locale } }: LocalizationProps) {
   const aaproject = await getProjects();
   const sortedProjects = aaproject.sort((a, b) =>
-    a.state['en'] === b.state['en'] ? 0 : a.state['en'] === 'in progress' ? -1 : 1
+    a.state["en"] === b.state["en"]
+      ? 0
+      : a.state["en"] === "in progress"
+      ? -1
+      : 1
   );
 
+  //console.log("FINALSOLUTION$$", aaproject);
 
-
-
-
-  console.log("FINALSOLUTION$$", aaproject);
-
-
-
-
-
-  const articaLandingBg = await getPageImage(ImageBucket.BACKGROUND, 'articaWall');
+  const articaLandingBg = await getPageImage(
+    ImageBucket.BACKGROUND,
+    "articaWall"
+  );
 
   return (
     <main className={styles.wrapp}>
+      <Toaster position="bottom-center" />
       <ScrollButton />
       <div
         className="animationMain"
@@ -55,8 +54,9 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
       </div>
       <section className="projectSection" id="project">
         <div className="projectList">
-          {sortedProjects.map(project => <ProjectCard key={project.name} data={project} locale={locale} />)}
-
+          {sortedProjects.map((project) => (
+            <ProjectCard key={project.name} data={project} locale={locale} />
+          ))}
         </div>
         <div className={styles.paginationWrapp}></div>
       </section>
