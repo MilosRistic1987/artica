@@ -1,6 +1,6 @@
 
 import ProjectNav from "@/app/[locale]/components/projectNav";
-import { getProjectByName } from "@/firebase/actions";
+import { getProjectById } from "@/firebase/actions";
 import Image from 'next/image';
 import Clients from "../../components/clients";
 import {
@@ -17,7 +17,7 @@ export default async function Product({ params }: { params: { slug: string, loca
 
     const dencodedParam = decodeURIComponent(params.slug);
     console.log("dencodedParam", dencodedParam)
-    const projectData = await getProjectByName(dencodedParam)
+    const projectData = await getProjectById(dencodedParam)
 
 
 

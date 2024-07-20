@@ -10,9 +10,10 @@ import {
     MinusCircleIcon
 } from '@heroicons/react/24/outline';
 import { expandFilesWithLink, generateId, getStatusObject, separateUrls } from '@/helpers/utils';
-import { FileObject, ImageBucket, ImageSubBucket, Language, TClients, TIdVal, TLocale, TUploadedUrl } from '@/types/types';
+import { FileObject, ImageBucket, ImageSubBucket, Language, TIdVal, TLocale } from '@/types/types';
 import ArticaLoader from '../articaLoader';
 import TagManager from '../tagManager';
+import toast from 'react-hot-toast';
 
 
 
@@ -28,9 +29,10 @@ interface Tag {
 
 
 const ProjectCreator: React.FC = () => {
-    const [title, setTitle] = useState<TLocale>({ en: '', rs: '', id: generateId() });
-    const [projectType, setProjectType] = useState<TLocale>({ en: '', rs: '', id: generateId() });
-    const [projectLocation, setProjectLocation] = useState<TLocale>({ en: '', rs: '', id: generateId() });
+    const initialLocaleState = { en: '', rs: '', id: generateId() };
+    const [title, setTitle] = useState<TLocale>(initialLocaleState);
+    const [projectType, setProjectType] = useState<TLocale>(initialLocaleState);
+    const [projectLocation, setProjectLocation] = useState<TLocale>(initialLocaleState);
 
     const [clientLinks, setClientLinks] = useState<TIdVal[]>([])
     const [files, setFiles] = useState<FileObject[]>([]);
@@ -38,6 +40,17 @@ const ProjectCreator: React.FC = () => {
     const [managmentTags, setManagmentTags] = useState<TLocale[]>([])
     const [projectStatus, setProjectStatus] = useState<string>('inprogress')
     const dialogRef = useRef<HTMLDialogElement>(null);
+
+    const resetForm = () => {
+        setTitle(initialLocaleState);
+        setProjectType(initialLocaleState);
+        setProjectLocation(initialLocaleState);
+        setClientLinks([]);
+        setFiles([]);
+        setDevelopmentTags([]);
+        setManagmentTags([]);
+        setProjectStatus('inprogress');
+    };
 
 
     const handleFileChange = (file: File, bucket: string, id: string) => {
@@ -74,14 +87,17 @@ const ProjectCreator: React.FC = () => {
             const uploadedUrls = await Promise.all(uploadPromises);
             const { clientArray, mainArray } = separateUrls(uploadedUrls)
             const state = getStatusObject(projectStatus)
-            const project = { name: title, state, src: mainArray[0], clients: clientArray, type: projectType, location: projectLocation, managmentTags, developmentTags }
+            const project = { name: title, state, src: mainArray[0], clients: clientArray, type: projectType, location: projectLocation, managmentTags, developmentTags, id: generateId() }
             console.log("projectforupload", project)
             const result = await createFBProject(project)
+            toast.success("Artica Project Successfuly Created");
             setTimeout(() => {
+                resetForm()
                 dialogRef.current?.close()
             }, 2000);
         } catch (error) {
             console.error('Error uploading files:', error);
+            toast.error("There was an error during project creation.Please try later !")
         }
 
 

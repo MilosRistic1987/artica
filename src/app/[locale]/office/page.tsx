@@ -1,19 +1,17 @@
-
 "use client"
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from '@/firebase/config';
 import { LocalizationProps } from '@/types/types';
-
-
-
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
 
 
 export default function Office({ params: { locale } }: LocalizationProps) {
-    console.log(locale, 'paramsOffice')
-    const router = useRouter()
+    const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -22,17 +20,18 @@ export default function Office({ params: { locale } }: LocalizationProps) {
         formData.forEach((value, name) => {
             formValues[name] = value.toString();
         });
-        const { email, password } = formValues
+        const { email, password } = formValues;
         try {
-            const res = await signInWithEmailAndPassword(firebaseAuth, email, password)
-            console.log("resauth", res.user)
-            res.user && router.push(`/${locale}/office/settings`)
+            const res = await signInWithEmailAndPassword(firebaseAuth, email, password);
+            console.log("resauth", res.user);
+            res.user && router.push(`/${locale}/office/settings`);
         } catch (error) {
             console.error(error);
-            //TO DO
-            // ERROR MSG DISPLAY TOAST OR SOMETHING LIKE THIS
+            toast.error((error as Error).message);
+            // TODO: Display error message using toast or similar
         }
     };
+
     return (
         <form className="loginForm" onSubmit={handleSubmit}>
             <section className='logoSection'>
@@ -53,9 +52,24 @@ export default function Office({ params: { locale } }: LocalizationProps) {
                     <label>Login here</label>
                 </article>
                 <label htmlFor="username" className='loginLbl'>Username</label>
-                <input className='loginInputs' type="text" placeholder="Email or Phone" id="username" name='email' />
+                <input className='loginInputs' type="text" placeholder="Email or Phone" id="username" name='email' required />
                 <label htmlFor="password" className='loginLbl'>Password</label>
-                <input className='loginInputs' type="password" placeholder="Password" id="password" name='password' />
+                <div className='passwordContainer'>
+                    <input
+                        className='loginInputPass'
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        id="password"
+                        name='password'
+                        required
+                    />
+                    <span
+                        className='passwordToggleIcon'
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+                    </span>
+                </div>
                 <button className='loginBtn' type='submit'>Log In</button>
             </section>
         </form>

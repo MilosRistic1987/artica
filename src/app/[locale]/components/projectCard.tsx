@@ -17,14 +17,14 @@ export type TProject = {
 const ProjectCard: React.FC<{ data: any, locale: string }> = ({ data, locale }) => {
 
     const router = useRouter()
-    const { name, src } = data
+    const { name, src, id } = data
     console.log(name, src, 'ProjectCard')
 
-    const redirectToProject = (name: string) => {
-        router.push(`/${locale}/project/${name}`)
+    const redirectToProject = (id: string) => {
+        router.push(`/${locale}/project/${id}`)
     }
     return (
-        <article className='projectCard' onClick={() => redirectToProject(name['en'])}>
+        <article className='projectCard' onClick={() => redirectToProject(id)}>
             <section className="projectImageWrapp">
                 <Image
                     src={`${src}`}

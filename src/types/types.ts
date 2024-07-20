@@ -1,11 +1,13 @@
 export enum Collestions {
-    ARTICA_PROJECTS = 'artica-projects'
+    ARTICA_PROJECTS = 'artica-projects',
+    ARTICA_PARTNERS = 'artica-partners'
 }
 
 export enum ImageBucket {
     BACKGROUND = 'background',
     USERS = 'users',
-    PROJECTS = 'projects'
+    PROJECTS = 'projects',
+    PARTNERS = 'partners'
 }
 
 export interface LocalizationProps {
@@ -88,7 +90,7 @@ export type TUploadedUrl = {
     link: string | undefined;
 };
 
-export type TClients = {
+export type TClientsAndPartners = {
     src: string;
     link: string;
     id: string

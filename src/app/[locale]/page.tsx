@@ -9,20 +9,21 @@ import About from "./components/aboutSection";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import ArticaLogo from "@/app/[locale]/components/articaLogo";
-import { getPageImage, getProjects } from "@/firebase/actions";
+import { getPageImage, getPartners, getProjects } from "@/firebase/actions";
 import { ImageBucket, LocalizationProps } from "@/types/types";
-import { Toaster } from "react-hot-toast";
+
 
 export const revalidate = 0;
 
 export default async function Home({ params: { locale } }: LocalizationProps) {
   const aaproject = await getProjects();
+  const partners = await getPartners()
   const sortedProjects = aaproject.sort((a, b) =>
     a.state["en"] === b.state["en"]
       ? 0
       : a.state["en"] === "in progress"
-      ? -1
-      : 1
+        ? -1
+        : 1
   );
 
   //console.log("FINALSOLUTION$$", aaproject);
@@ -34,7 +35,7 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
 
   return (
     <main className={styles.wrapp}>
-      <Toaster position="bottom-center" />
+
       <ScrollButton />
       <div
         className="animationMain"
@@ -62,7 +63,7 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
       </section>
       <About />
       <Contact />
-      <Footer />
+      <Footer partners={partners} />
     </main>
   );
 }

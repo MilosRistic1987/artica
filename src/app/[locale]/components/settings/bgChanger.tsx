@@ -1,12 +1,10 @@
 "use client"
-import Link from 'next/link';
-import {
-    HomeIcon
-} from '@heroicons/react/24/solid';
+
 import Image from 'next/image'
 import { getPageImage, uploadFile } from '@/firebase/actions';
 import { ImageBucket } from '@/types/types';
 import { FormEvent, useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 
 
@@ -51,14 +49,13 @@ const BGChanger: React.FC = () => {
         const data = {
             avatarFile: formData.get('bgFile'),
         };
+        try {
+            const bgPhoto = await uploadFile(data.avatarFile, ImageBucket.BACKGROUND, 'articaWall')
+            toast.success("Artica Background Successfuly Canged");
+        } catch (error) {
+            toast.error("There was an error during background creation.Please try later !")
+        }
 
-        const bgPhoto = await uploadFile(data.avatarFile, ImageBucket.BACKGROUND, 'articaWall')
-
-
-
-        // Process formData or send it to the server
-        // For example, you can log it to the console:
-        console.log('bgPhoto', bgPhoto);
     }
 
 

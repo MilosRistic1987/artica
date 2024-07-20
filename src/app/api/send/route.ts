@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
       from: 'Antica <onboarding@resend.dev>',
       to: ['ristic.aleksandra1990@gmail.com'],
       subject: 'Redirect from artica.rs contact form',
-      text:'Message text',
-      react:  EmailTemplate(content),
-  
+      text: 'Message text',
+      react: EmailTemplate(content),
+
     });
 
     if (error) {

@@ -5,8 +5,9 @@ import {
 } from '@heroicons/react/24/solid';
 import Image from 'next/image'
 import { getPageImage, getProjects } from '@/firebase/actions';
-import { ImageBucket, Language, TGroupedProjects } from '@/types/types';
+import { ImageBucket, TGroupedProjects } from '@/types/types';
 import { useEffect, useState } from 'react';
+import { handleGroupByState } from '@/helpers/utils';
 
 
 
@@ -26,9 +27,7 @@ const NavInfo: React.FC = () => {
                     getPageImage(ImageBucket.BACKGROUND, 'articaWall') as Promise<string>,
                     getProjects()
                 ]);
-                const groupByState = Object.groupBy(projects, project => {
-                    return project.state[Language.ENGLISH];
-                });
+                const groupByState = handleGroupByState(projects);
                 console.log('groupByState', groupByState)
                 setGroupedProjectCount({
                     inProgress: groupByState['in progress']?.length || 0,

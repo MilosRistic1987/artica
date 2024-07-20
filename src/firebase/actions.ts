@@ -1,6 +1,6 @@
-import { Collestions, Language, TProjectFB, } from "@/types/types";
+import { Collestions, Language, TClientsAndPartners, TProjectFB, } from "@/types/types";
 import { firebaseApp } from "./config";
-import { getFirestore, collection, getDocs, getDoc, onSnapshot, query, where, addDoc, setDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, getDoc, onSnapshot, query, where, addDoc, setDoc, doc, deleteDoc } from "firebase/firestore";
 
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { ProjecService } from "./observable";
@@ -30,7 +30,13 @@ import { ProjecService } from "./observable";
 
 export const createFBProject = async (project: any) => {
     const fireStore = getFirestore(firebaseApp)
-    const result = await setDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, project.name[Language.ENGLISH]), project);
+    const result = await setDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, project.id), project);
+    return result
+}
+
+export const createFBPartner = async (partner: TClientsAndPartners) => {
+    const fireStore = getFirestore(firebaseApp)
+    const result = await setDoc(doc(fireStore, Collestions.ARTICA_PARTNERS, partner.id), partner);
     return result
 }
 
@@ -46,10 +52,46 @@ export const getProjects = async () => {
     return data
 }
 
-export const getProjectByName = async (name: string) => {
+export const getPartners = async () => {
     const fireStore = getFirestore(firebaseApp)
-    const docRef = doc(fireStore, Collestions.ARTICA_PROJECTS, name);
+    const querySnapshot = await getDocs(collection(fireStore, Collestions.ARTICA_PARTNERS));
+    let data: TClientsAndPartners[] = [];
+    querySnapshot.forEach((doc) => {
+        data.push(doc.data() as TClientsAndPartners);
+    });
+
+    return data
+}
+
+export const deleteFBProject = async (projectName: string) => {
+    const fireStore = getFirestore(firebaseApp)
+    let response: boolean;
+    try {
+        await deleteDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, projectName));
+        response = true
+    } catch (error) {
+        response = false
+    }
+    return response
+}
+
+export const deleteFBPartner = async (id: string) => {
+    const fireStore = getFirestore(firebaseApp)
+    let response: boolean;
+    try {
+        await deleteDoc(doc(fireStore, Collestions.ARTICA_PARTNERS, id));
+        response = true
+    } catch (error) {
+        response = false
+    }
+    return response
+}
+
+export const getProjectById = async (id: string) => {
+    const fireStore = getFirestore(firebaseApp)
+    const docRef = doc(fireStore, Collestions.ARTICA_PROJECTS, id);
     const docSnap = await getDoc(docRef);
+    console.log(id)
 
     if (docSnap.exists()) {
         return docSnap.data()

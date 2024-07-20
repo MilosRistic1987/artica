@@ -1,14 +1,18 @@
 
 import React from 'react';
-import { footerData, partners } from '../../../helpers/mockUp';
+import { footerData } from '../../../helpers/mockUp';
 import Image from 'next/image'
 import { useTranslations } from 'next-intl';
+import { TClientsAndPartners } from '@/types/types';
+import ImageHandler from './imageHandler';
 
 
+interface FooterProps {
+    partners: TClientsAndPartners[];
+}
 
 
-
-const Footer: React.FC = () => {
+const Footer: React.FC<FooterProps> = ({ partners }) => {
 
     const t = useTranslations('Footer');
 
@@ -29,13 +33,7 @@ const Footer: React.FC = () => {
 
                 </div>
                 <div className='partnersWrapp'>
-                    {partners.map(p => <Image
-                        key={p.id}
-                        src={p.imgSrc}
-                        width={p.width}
-                        height={50}
-                        alt="Artica Parthners"
-                    />)}
+                    {partners.map(p => <a key={p.id} href={p.link}><ImageHandler imgData={{ src: p.src, alt: 'Artica Partners', name: p.link }} /></a>)}
                 </div>
 
             </section>

@@ -1,0 +1,23 @@
+.partnerSetList {
+    @include flexCenter;
+}
+
+.partnerListItemWrapp {
+    display: grid;
+    grid-template-rows: 70% 30%;
+    height: 10rem;
+    // width: 60%;
+    // margin: 0.5rem 0;
+    background: white;
+    margin: 0 1rem;
+
+    & .imgWrapp {
+        position: relative;
+        border-bottom: 1px solid $articaDrakBlack;
+
+        & img {
+            object-fit: contain;
+        }
+    }
+
+}
