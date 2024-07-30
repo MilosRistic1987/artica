@@ -63,11 +63,12 @@ export const getPartners = async () => {
     return data
 }
 
-export const deleteFBProject = async (projectName: string) => {
+export const deleteFBProject = async (id: string) => {
     const fireStore = getFirestore(firebaseApp)
     let response: boolean;
     try {
-        await deleteDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, projectName));
+        const resp = await deleteDoc(doc(fireStore, Collestions.ARTICA_PROJECTS, id));
+        console.log("respDeleteProject", resp)
         response = true
     } catch (error) {
         response = false

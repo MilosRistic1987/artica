@@ -83,6 +83,12 @@
     gap: 2rem;
 }
 
+.clientPrivate {
+    width: 3rem;
+    height: 3rem;
+    color: $articaDrakBlack;
+}
+
 .tagsWrapp {
     display: grid;
     grid-template-rows: 0.8fr 1fr;
@@ -106,6 +112,7 @@
 
         & .tagList {
             display: flex;
+            align-items: center;
             // border-bottom: 1px solid $articaLightGreen;
             // width: 80%;
 

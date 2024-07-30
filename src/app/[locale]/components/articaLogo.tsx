@@ -9,7 +9,9 @@ export type TLogoMeasures = {
     logoWidth: number;
     logoHeight: number
 }
-const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures }> = ({ logoMesaures }) => {
+const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures, locale: string }> = ({ logoMesaures, locale }) => {
+
+    console.log("LOCALEEARTICALOGO", locale)
     const { logoWidth, logoHeight } = logoMesaures
     const { theme, setTheme } = useTheme()
     //console.log(theme)
@@ -24,7 +26,7 @@ const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures }> = ({ logoMesaures })
             alt="Artica International"
             style={{ cursor: 'pointer' }}
             title='Back to HOME'
-            onClick={() => router.push('/')}
+            onClick={() => router.push(`/${locale}`)}
         />
 
     );

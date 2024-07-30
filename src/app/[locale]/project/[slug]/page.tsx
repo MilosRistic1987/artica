@@ -4,7 +4,9 @@ import { getProjectById } from "@/firebase/actions";
 import Image from 'next/image';
 import Clients from "../../components/clients";
 import {
-    StarIcon
+    StarIcon,
+    PlayIcon,
+    ChevronRightIcon
 } from '@heroicons/react/24/solid';
 
 
@@ -25,7 +27,7 @@ export default async function Product({ params }: { params: { slug: string, loca
 
     return (
         <main className="articaProject">
-            <ProjectNav projectName={projectData?.name[params.locale]} />
+            <ProjectNav projectName={projectData?.name[params.locale]} locale={params.locale} />
             <section className="projectMain">
                 <article className="projectContentWrapper">
                     <div className="heading">
@@ -34,10 +36,10 @@ export default async function Product({ params }: { params: { slug: string, loca
                     </div>
                     <div className="tagsWrapp">
                         <aside>
-                            {projectData?.developmentTags.map((tag: any) => <div key={tag.id} className="tagList"><StarIcon /><label >{tag[params.locale]}</label></div>)}
+                            {projectData?.developmentTags.map((tag: any) => <div key={tag.id} className="tagList"><label >{tag[params.locale]}</label></div>)}
                         </aside>
                         <aside>
-                            {projectData?.managmentTags.map((tag: any) => <div key={tag.id} className="tagList"><StarIcon /><label key={tag.id}>{tag[params.locale]}</label></div>)}
+                            {projectData?.managmentTags.map((tag: any) => <div key={tag.id} className="tagList"><label key={tag.id}>{tag[params.locale]}</label></div>)}
                         </aside>
                     </div>
                 </article>

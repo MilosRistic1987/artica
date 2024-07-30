@@ -1,24 +1,30 @@
-import Image from "next/image";
+
 import styles from "./page.module.css";
 import InlineStyledSVG from "./components/animationLogo";
 import ScrollButton from "./components/scrollButton";
 import Navigation from "./components/navigation";
-import { bbb, projects } from "../../helpers/mockUp";
 import ProjectCard from "./components/projectCard";
 import About from "./components/aboutSection";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import ArticaLogo from "@/app/[locale]/components/articaLogo";
 import { getPageImage, getPartners, getProjects } from "@/firebase/actions";
-import { ImageBucket, LocalizationProps } from "@/types/types";
+import { HomeProps, ImageBucket } from "@/types/types";
+import PaginationControls from "./components/paginationControl";
 
 
 export const revalidate = 0;
 
-export default async function Home({ params: { locale } }: LocalizationProps) {
-  const aaproject = await getProjects();
+export default async function Home({ params, searchParams }: HomeProps) {
+  const { locale } = params
+  const { page = '1', per_page = '2' } = searchParams;
+  const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
+  const end = start + Number(per_page) // 5, 10, 15 ...
+  const aaproject = await getProjects()
   const partners = await getPartners()
-  const sortedProjects = aaproject.sort((a, b) =>
+  const projects = aaproject.slice(start, end)
+  console.log(projects.length)
+  const sortedProjects = projects.sort((a, b) =>
     a.state["en"] === b.state["en"]
       ? 0
       : a.state["en"] === "in progress"
@@ -26,12 +32,15 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
         : 1
   );
 
+
   //console.log("FINALSOLUTION$$", aaproject);
 
   const articaLandingBg = await getPageImage(
     ImageBucket.BACKGROUND,
     "articaWall"
   );
+
+  const displayPagination = aaproject.length > Number(per_page)
 
   return (
     <main className={styles.wrapp}>
@@ -47,7 +56,7 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
       >
         <section className="main">
           <header className="navBar">
-            <ArticaLogo logoMesaures={{ logoWidth: 200, logoHeight: 200 }} />
+            <ArticaLogo logoMesaures={{ logoWidth: 200, logoHeight: 200 }} locale={locale} />
             <Navigation locale={locale} />
           </header>
           <InlineStyledSVG />
@@ -55,11 +64,17 @@ export default async function Home({ params: { locale } }: LocalizationProps) {
       </div>
       <section className="projectSection" id="project">
         <div className="projectList">
-          {sortedProjects.map((project) => (
+          {sortedProjects?.map((project) => (
             <ProjectCard key={project.name} data={project} locale={locale} />
           ))}
         </div>
-        <div className={styles.paginationWrapp}></div>
+        {displayPagination && <PaginationControls
+          hasNextPage={end < aaproject.length}
+          hasPrevPage={start > 0}
+          totalItems={aaproject.length}
+          locale={locale}
+        />}
+
       </section>
       <About />
       <Contact />

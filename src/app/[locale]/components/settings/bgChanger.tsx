@@ -67,7 +67,7 @@ const BGChanger: React.FC = () => {
     return (
         <section className='profileWrrapp'>
             <form onSubmit={handleForm}>
-                {articaBgSrc && <div className='fileSwitcherWrapp'>
+                <div className='fileSwitcherWrapp'>
                     <input
                         type="file"
                         ref={backgroundRef}
@@ -81,7 +81,7 @@ const BGChanger: React.FC = () => {
                         alt="Artica International"
                     />
                 </div>
-                }
+
                 <button type='submit' className='bgChangerBtn'>Change Background</button>
             </form>
         </section>

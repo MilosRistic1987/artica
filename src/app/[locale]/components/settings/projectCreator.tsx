@@ -62,6 +62,11 @@ const ProjectCreator: React.FC = () => {
         setFiles(prevFiles => [...prevFiles, newFileObject]);
     };
 
+    const handleRemoveClient = (id: string) => {
+        setClientLinks([...clientLinks.filter(client => client.id !== id)])
+
+    }
+
     const handleClientsLink = (newClient: TIdVal) => {
         setClientLinks(prevClientLinks =>
             prevClientLinks.map(clientLink =>
@@ -240,7 +245,7 @@ const ProjectCreator: React.FC = () => {
                             value={client.value}
                             onChange={(e) => handleClientsLink({ id: client.id, value: e.target.value })}
                         />
-                        <MinusCircleIcon className='removeIcon' />
+                        <MinusCircleIcon className='removeIcon' onClick={() => handleRemoveClient(client.id)} />
                     </div>
                 ))}
                 <div className='addBtnWrapp' onClick={handleAddClient}>

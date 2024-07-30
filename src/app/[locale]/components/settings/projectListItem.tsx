@@ -17,7 +17,7 @@ const ProjectListItem = (project: any) => {
     }
 
     const confirmDelete = async () => {
-        const resp = await deleteFBProject(project?.name['en'])
+        const resp = await deleteFBProject(project?.id)
         if (resp) {
             toast.success("Artica Project Successfuly Deleted");
             setTimeout(() => {

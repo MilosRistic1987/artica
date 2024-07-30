@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = ({ partners }) => {
 
                 </div>
                 <div className='partnersWrapp'>
-                    {partners.map(p => <a key={p.id} href={p.link}><ImageHandler imgData={{ src: p.src, alt: 'Artica Partners', name: p.link }} /></a>)}
+                    {partners.map(p => <a key={p.id} href={p.link} target='_blank'><ImageHandler imgData={{ src: p.src, alt: 'Artica Partners', name: p.link }} /></a>)}
                 </div>
 
             </section>

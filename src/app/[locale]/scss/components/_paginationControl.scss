@@ -1,0 +1,32 @@
+.paginationWrapp {
+    @include flexCenter;
+
+    & button {
+        padding: 0.5rem;
+        background: $articaLightGreen;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        border: none;
+        outline: none;
+        width: 8rem;
+
+
+
+        & svg {
+            height: 1.5rem;
+        }
+
+        &:disabled {
+            background: lighten($articaLightGreen, 30%);
+        }
+    }
+}
+
+.pagNumPrev {
+    margin: 0 0.5rem;
+}

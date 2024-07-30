@@ -16,6 +16,23 @@ export interface LocalizationProps {
     };
 }
 
+export interface HomeProps {
+    params: {
+        locale: string;
+    };
+    searchParams: {
+        page?: string;
+        per_page?: string;
+    };
+}
+
+export interface PaginationControlsProps {
+    hasNextPage: boolean
+    hasPrevPage: boolean
+    totalItems: number
+    locale: string
+}
+
 export interface NavigationProps {
     locale: string;
 }
