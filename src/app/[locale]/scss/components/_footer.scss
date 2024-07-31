@@ -6,9 +6,18 @@
     & section {
         width: 60%;
         height: 100%;
-        // background: burlywood;
         display: grid;
         grid-template-rows: 80% 20%;
+
+        @include mobile {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+
+        @include small-screen {
+            width: 90%;
+        }
     }
 }
 
@@ -26,16 +35,27 @@
     @include flexCenter;
     // border-bottom: 1px solid white;
 
+
+
     & svg {
         width: 4rem;
         border-right: 2px solid $articaMainBlue;
         padding-right: 0.5rem;
+
+        @include mobile {
+            width: 2rem;
+        }
     }
 
     & label {
         margin-left: 1rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        @include mobile {
+            font-size: 0.5rem;
+            margin-left: 0.5rem;
+        }
     }
 }
 
@@ -48,6 +68,10 @@
     & label {
         margin: 0.2rem 0;
         font-weight: 200;
+
+        @include mobile {
+            font-size: 0.4rem;
+        }
     }
 }
 

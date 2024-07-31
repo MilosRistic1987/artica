@@ -1,11 +1,11 @@
-// "use client"
+
 
 
 import Link from 'next/link';
 import LanguagePicker from './languagePicker';
 import ThemeChanger from './themeChanger';
-
 import { NavItem, NavLabel, NavigationProps } from '@/types/types';
+
 
 
 
@@ -20,6 +20,8 @@ const Navigation: React.FC<NavigationProps> = ({ locale }) => {
         { navLabel: { en: "Contact", rs: "Kontakt" }, path: '#contact' },
 
     ]
+
+
 
 
 

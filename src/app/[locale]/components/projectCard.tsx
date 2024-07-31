@@ -18,7 +18,7 @@ const ProjectCard: React.FC<{ data: any, locale: string }> = ({ data, locale }) 
 
     const router = useRouter()
     const { name, src, id } = data
-    console.log(name, src, 'ProjectCard')
+
 
     const redirectToProject = (id: string) => {
         router.push(`/${locale}/project/${id}`)

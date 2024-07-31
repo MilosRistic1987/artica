@@ -31,14 +31,6 @@
 
 
 
-.navBar {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-  /* position: fixed; */
-}
 
 .navItems{
   display: flex;

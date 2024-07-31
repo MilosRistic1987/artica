@@ -4,6 +4,10 @@
       height: 600px;
       position: relative;
       cursor: pointer;
+
+      @include mobile {
+          height: 500px;
+      }
   }
 
   .projectImageWrapp {

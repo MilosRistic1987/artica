@@ -15,7 +15,6 @@ type TProject = {
 const CardOverlay: React.FC<{ projectData: any, locale: string }> = ({ projectData, locale }) => {
     const { name, state } = projectData
 
-    console.log(projectData)
     const stateClassName = state['en'] === 'finished' ? state : 'inProgress'
 
     return (

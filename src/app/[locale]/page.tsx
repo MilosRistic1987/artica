@@ -11,6 +11,7 @@ import ArticaLogo from "@/app/[locale]/components/articaLogo";
 import { getPageImage, getPartners, getProjects } from "@/firebase/actions";
 import { HomeProps, ImageBucket } from "@/types/types";
 import PaginationControls from "./components/paginationControl";
+import NavigationHandler from "./components/navigationHandler";
 
 
 export const revalidate = 0;
@@ -55,17 +56,14 @@ export default async function Home({ params, searchParams }: HomeProps) {
         }}
       >
         <section className="main">
-          <header className="navBar">
-            <ArticaLogo logoMesaures={{ logoWidth: 200, logoHeight: 200 }} locale={locale} />
-            <Navigation locale={locale} />
-          </header>
+          <NavigationHandler locale={locale} />
           <InlineStyledSVG />
         </section>
       </div>
       <section className="projectSection" id="project">
         <div className="projectList">
           {sortedProjects?.map((project) => (
-            <ProjectCard key={project.name} data={project} locale={locale} />
+            <ProjectCard key={project.name['en']} data={project} locale={locale} />
           ))}
         </div>
         {displayPagination && <PaginationControls

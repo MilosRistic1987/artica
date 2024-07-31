@@ -20,7 +20,7 @@ export const projects = [
 ]
 
 export const about = [
-    { content: " International is a modern company, founded in 2010, focused on consulting, management, building design and construction.", id: 1 },
+    { content: "International is a modern company, founded in 2010, focused on consulting, management, building design and construction.", id: 1 },
     { content: "The company has earned recognition for undertaking large, complex projects, fostering innovation, embracing emerging technologies, and making a difference for their clients, employees and community.", id: 2 },
     { content: "Our comprehensive services capture all phases of the building development process from providing assistance in finding suitable sites, development of concept, preliminary and final designs, through planning, budgeting, scheduling and permitting to expert and design supervision.", id: 3 },
     { content: "In accordance with our vision and mission, strong intention in service delivery, integration and systematically organizational development, Artica International has been constantly entrusted by clients, enlarging its greater value in serviceability whether be high buildings, supermarkets, large-scale projects, hypermarkets, and other large-scale construction projects where customers include the government and private sectors.", id: 4 },

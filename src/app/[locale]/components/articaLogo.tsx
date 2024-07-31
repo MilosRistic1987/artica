@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React from 'react';
 import { useRouter } from 'next/navigation'
 
+
 export type TLogoMeasures = {
     logoWidth: number;
     logoHeight: number
@@ -16,7 +17,9 @@ const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures, locale: string }> = ({
     const { theme, setTheme } = useTheme()
     //console.log(theme)
     const router = useRouter()
-    const logoSrc = theme === 'dark' ? '/articaNewDark.svg' : '/articaNew.svg'
+    const logoSrc = theme === 'dark' ? '/articaNewDark.svg' : '/articaNew.svg';
+
+
 
     return (
         <Image

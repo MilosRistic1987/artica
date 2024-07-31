@@ -1,6 +1,14 @@
 .paginationWrapp {
     @include flexCenter;
 
+    @include mobile {
+        margin-top: 2rem;
+    }
+
+    @include small-screen {
+        margin-top: 2rem;
+    }
+
     & button {
         padding: 0.5rem;
         background: $articaLightGreen;

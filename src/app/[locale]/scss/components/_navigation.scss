@@ -23,6 +23,11 @@
     padding: 10px;
     border: solid rgba(0, 0, 0, 0) 1px;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+
+    @include small-screen {
+        letter-spacing: 0;
+        font-size: 20px;
+    }
 }
 
 .navItems li:hover {
