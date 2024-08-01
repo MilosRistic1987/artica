@@ -23,7 +23,7 @@ const ThemeChanger = () => {
         //         <MoonIcon className="moon" />
         //     )}
         // </div>
-        <div className={styles.toggleSwitch} >
+        <div className='toggleSwitch' >
             <label className={styles.switchLabel}>
                 <input type='checkbox' className={styles.checkInput} onClick={() => handleTheme()} />
                 <span className={styles.slider}></span>

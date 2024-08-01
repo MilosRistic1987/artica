@@ -22,7 +22,7 @@ const NavigationHandler: React.FC<NavigationProps> = ({ locale }) => {
     }, [isTablet, isMobile]);
     return (
         <>
-            {isMobile ? <MobileNavigation /> : <header className="navBar">
+            {isMobile ? <MobileNavigation locale={locale} /> : <header className="navBar">
                 <ArticaLogo logoMesaures={{ logoWidth, logoHeight }} locale={locale} />
                 <Navigation locale={locale} />
             </header>}

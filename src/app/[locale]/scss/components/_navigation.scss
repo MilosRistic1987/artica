@@ -30,6 +30,12 @@
     }
 }
 
+.toggleSwitch {
+    position: relative;
+    width: 120px;
+    margin-left: 30px;
+}
+
 .navItems li:hover {
     background: rgba(128, 128, 128, 0.153);
     border: solid black 1px;

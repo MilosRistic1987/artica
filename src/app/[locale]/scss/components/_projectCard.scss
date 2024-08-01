@@ -25,6 +25,10 @@
           text-transform: uppercase;
           font-weight: 300;
           margin-left: 10px;
+
+          @include mobile {
+              font-size: 0.7rem;
+          }
       }
 
   }
@@ -82,6 +86,10 @@
           transform: translate(-50%, -50%);
           transition: all 0.6s ease-in-out;
 
+          @include mobile {
+              font-size: 1.5em;
+          }
+
       }
 
       & h2 {
@@ -98,6 +106,10 @@
           -webkit-background-clip: text;
           -moz-background-clip: text;
           background-clip: text;
+
+          @include mobile {
+              font-size: 3em;
+          }
       }
 
       & .finished {

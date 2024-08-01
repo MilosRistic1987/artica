@@ -78,4 +78,14 @@
 .partnersWrapp {
     @include flexCenter;
     gap: 2rem;
+
+    @include mobile {
+        overflow-x: scroll;
+        justify-content: space-evenly;
+
+        &::-webkit-scrollbar {
+            display: none;
+
+        }
+    }
 }
