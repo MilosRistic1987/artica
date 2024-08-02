@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import LanguagePicker from './languagePicker';
 import ThemeChanger from './themeChanger';
+import ArticaLogo from './articaLogo';
 
 const MobileNavigation: React.FC<NavigationProps> = ({ locale }) => {
   const navItems: NavItem[] = [
@@ -19,6 +20,7 @@ const MobileNavigation: React.FC<NavigationProps> = ({ locale }) => {
   };
 
   return (
+
     <nav id="nav" className={`mobileNav ${isMenuOpen ? 'navOpen' : ''}`} role="navigation">
       <ul className="mobileNavMenu" id="menu" aria-label="main navigation" hidden={!isMenuOpen}>
         {navItems.map(nav => <li className='mobileNavItem' key={nav.navLabel['en']}><Link className='mobileNavLink' onClick={handleToggle} href={nav.path}>{nav.navLabel[locale as keyof NavLabel]}</Link></li>)}
@@ -41,6 +43,7 @@ const MobileNavigation: React.FC<NavigationProps> = ({ locale }) => {
 
       <div className="splash"></div>
     </nav>
+
   );
 };
 

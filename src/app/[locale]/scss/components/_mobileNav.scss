@@ -10,6 +10,15 @@
     @return 2 * $pi * $r;
 }
 
+
+.mobileNavBar {
+    & svg {
+        position: absolute;
+        left: 0;
+        margin: 1rem;
+    }
+}
+
 .mobileNav {
     width: 100%;
 

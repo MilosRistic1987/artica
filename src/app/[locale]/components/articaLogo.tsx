@@ -6,20 +6,35 @@ import React from 'react';
 import { useRouter } from 'next/navigation'
 
 
-export type TLogoMeasures = {
+type TLogoMeasures = {
     logoWidth: number;
-    logoHeight: number
+    logoHeight: number;
+};
+
+interface ArticaLogoProps {
+    logoMeasures: TLogoMeasures;
+    locale: string;
+    style?: React.CSSProperties; // Optional style prop
 }
-const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures, locale: string }> = ({ logoMesaures, locale }) => {
+const ArticaLogo: React.FC<ArticaLogoProps> = ({ logoMeasures, locale, style }) => {
 
     console.log("LOCALEEARTICALOGO", locale)
-    const { logoWidth, logoHeight } = logoMesaures
+    const { logoWidth, logoHeight } = logoMeasures
     const { theme, setTheme } = useTheme()
     //console.log(theme)
     const router = useRouter()
     const fillColor = theme === 'dark' ? "#fff" : '#231f20';
 
+    const defaultStyles: React.CSSProperties = {
+        width: logoWidth,
+        height: logoHeight,
+        cursor: 'pointer',
+    };
 
+    const logoStyles: React.CSSProperties = {
+        ...defaultStyles,
+        ...style,
+    };
 
     return (
         <svg
@@ -27,7 +42,7 @@ const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures, locale: string }> = ({
             data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 416.81 426.2"
-            style={{ width: logoWidth, height: logoHeight, cursor: 'pointer' }}
+            style={logoStyles}
             onClick={() => router.push(`/${locale}`)}
         >
             <defs>

@@ -2,15 +2,15 @@
 
 import { useClientMediaQuery } from '@/hooks/mediaQuery';
 import { useTheme } from 'next-themes';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const InlineStyledSVG: React.FC = () => {
 
     const isMobile = useClientMediaQuery('(max-width: 600px)')
-    const { theme, setTheme } = useTheme()
+    const { theme } = useTheme()
     const fillColor = theme === 'dark' ? "#fff" : '#231f20';
 
-    const mainWidth = isMobile ? '220px' : '550px'
+    const mainWidth = isMobile ? '210px' : '550px'
     const padding = isMobile ? '25px' : '40px'
     const svgStyle = { fill: 'none', stroke: fillColor, strokeMiterlimit: 10, opacity: 0.2 };
     const mainSvg = { top: '60%', position: 'absolute', width: mainWidth, left: '10%', padding } as any

@@ -20,12 +20,19 @@ const NavigationHandler: React.FC<NavigationProps> = ({ locale }) => {
         setLogoWidth(newSize);
         setLogoHeight(newSize);
     }, [isTablet, isMobile]);
+
+
     return (
         <>
-            {isMobile ? <MobileNavigation locale={locale} /> : <header className="navBar">
-                <ArticaLogo logoMesaures={{ logoWidth, logoHeight }} locale={locale} />
-                <Navigation locale={locale} />
-            </header>}
+            {isMobile ?
+                <>
+                    <ArticaLogo logoMeasures={{ logoWidth: 130, logoHeight: 130 }} locale={locale} style={{ position: 'absolute', left: 0, margin: '1rem' }} />
+                    <MobileNavigation locale={locale} />
+                </> :
+                <header className="navBar">
+                    <ArticaLogo logoMeasures={{ logoWidth, logoHeight }} locale={locale} />
+                    <Navigation locale={locale} />
+                </header>}
 
         </>
     )
