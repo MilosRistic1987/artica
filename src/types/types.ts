@@ -7,7 +7,8 @@ export enum ImageBucket {
     BACKGROUND = 'background',
     USERS = 'users',
     PROJECTS = 'projects',
-    PARTNERS = 'partners'
+    PARTNERS = 'partners',
+    MAIL = 'email'
 }
 
 export interface LocalizationProps {

@@ -23,6 +23,7 @@ const ArticaLogo: React.FC<{ logoMesaures: TLogoMeasures, locale: string }> = ({
 
     return (
         <Image
+            className='articaLogo'
             src={logoSrc}
             width={logoWidth}
             height={logoHeight}
