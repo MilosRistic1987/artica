@@ -6,7 +6,7 @@ const ProjectNav: React.FC<{ projectName: string, locale: string }> = ({ project
 
     return (
         <section className='projectNav'>
-            <ArticaLogo logoMesaures={{ logoWidth: 100, logoHeight: 100 }} locale={locale} />
+            <ArticaLogo logoMeasures={{ logoWidth: 100, logoHeight: 100 }} locale={locale} />
             <h1>{projectName}</h1>
         </section>
 
