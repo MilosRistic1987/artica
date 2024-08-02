@@ -1,19 +1,23 @@
 "use client"
 
 import { useClientMediaQuery } from '@/hooks/mediaQuery';
+import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
 
 const InlineStyledSVG: React.FC = () => {
 
     const isMobile = useClientMediaQuery('(max-width: 600px)')
+    const { theme, setTheme } = useTheme()
+    const fillColor = theme === 'dark' ? "#fff" : '#231f20';
+
     const mainWidth = isMobile ? '220px' : '550px'
     const padding = isMobile ? '25px' : '40px'
-    const svgStyle = { fill: 'none', stroke: '#231f20', strokeMiterlimit: 10, opacity: 0.2 };
+    const svgStyle = { fill: 'none', stroke: fillColor, strokeMiterlimit: 10, opacity: 0.2 };
     const mainSvg = { top: '60%', position: 'absolute', width: mainWidth, left: '10%', padding } as any
-    const polygonStyle = { fill: '#231f20' };
-    const pathStyle = { fill: "none", stroke: '#231f20', strokeMiterlimit: 10 };
-    const textStyle = { fontSize: '30px', fill: '#231f20', fontFamily: 'AgencyFB-Reg, Agency FB', letterSpacing: '0.7em' };
-    const circleStyle = { fill: '#231f20', opacity: 0.2 };
+    const polygonStyle = { fill: fillColor };
+    const pathStyle = { fill: 'none', stroke: fillColor, strokeMiterlimit: 10 };
+    const textStyle = { fontSize: '30px', fill: fillColor, fontFamily: 'AgencyFB-Reg, Agency FB', letterSpacing: '0.7em' };
+    const circleStyle = { fill: fillColor, opacity: 0.2 };
 
 
 

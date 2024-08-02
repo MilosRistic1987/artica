@@ -50,7 +50,7 @@
 @-webkit-keyframes svg-animeFill {
 
     to {
-        fill: black;
+        fill: white;
 
     }
 }
@@ -58,7 +58,7 @@
 @keyframes svg-animeFill {
 
     to {
-        fill: black;
+        fill: white;
 
     }
 }
@@ -95,6 +95,42 @@
     100% {
 
         fill: black;
+
+    }
+}
+
+
+
+@-webkit-keyframes svgPath-animeDark {
+    0% {
+        fill: transparent;
+    }
+
+    90% {
+        fill: transparent;
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+
+        fill: white;
+    }
+}
+
+@keyframes svgPath-animeDark {
+    0% {
+        fill: transparent;
+    }
+
+    90% {
+        fill: transparent;
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+
+        fill: white;
+
     }
 }
 
@@ -270,37 +306,7 @@
     }
 }
 
-@-webkit-keyframes svgPath-anime {
-    0% {
-        fill: transparent;
-    }
 
-    90% {
-        fill: transparent;
-        stroke-dashoffset: 0;
-    }
-
-    100% {
-
-        fill: black;
-    }
-}
-
-@keyframes svgPath-anime {
-    0% {
-        fill: transparent;
-    }
-
-    90% {
-        fill: transparent;
-        stroke-dashoffset: 0;
-    }
-
-    100% {
-
-        fill: black;
-    }
-}
 
 
 @-webkit-keyframes scale-in-center {
