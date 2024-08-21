@@ -62,7 +62,7 @@
 }
 
 .aboutSection {
-    height: 100vh;
+    height: 90vh;
     display: grid;
     grid-template-rows: 1fr 1fr;
     @include lightBgVer2;
@@ -106,6 +106,7 @@
     @include flexCenter;
     height: 100%;
 
+
     & .wrapp {
         display: grid;
         align-items: center;
@@ -141,7 +142,12 @@
 .paraWrappBottom {
     @include flexCenter;
 
+
+
+
     & .wrapp {
+        width: 90%;
+
         @include mobile {
             display: grid;
             align-items: center;
@@ -156,7 +162,7 @@
     align-items: flex-start;
     width: 100%;
     flex-direction: column;
-    margin: 10px 0;
+    margin: 5px 0;
 
     @include mobile {
         align-items: center;
@@ -166,8 +172,8 @@
         text-transform: uppercase;
         font-weight: 600;
         letter-spacing: 3px;
-        margin-left: 10px;
-        margin-bottom: 10px;
+        // margin-left: 10px;
+        margin-bottom: 2px;
     }
 
     & .aboutIIWrapp {

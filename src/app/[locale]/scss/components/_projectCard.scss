@@ -19,12 +19,12 @@
       display: flex;
       align-items: center;
       margin: 10px 0;
-      border: 2px solid $articaMainBlue;
+      //   border: 2px solid $articaMainBlue;
 
       & h1 {
           text-transform: uppercase;
-          font-weight: 300;
-          margin-left: 10px;
+          font-weight: 600;
+          //   margin-left: 10px;
 
           @include mobile {
               font-size: 0.7rem;

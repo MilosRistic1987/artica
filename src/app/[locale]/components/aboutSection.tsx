@@ -10,6 +10,14 @@ import { useTranslations } from 'next-intl';
 const About: React.FC = () => {
 
     const t = useTranslations('About');
+    console.log("transaltion", t('main'))
+    const lang = t('main')
+    // let srcOne:string='', srcTwo:string=''
+    const srcTwo = `/diagramII${lang}.png`
+    const srcOne = `/diagram${lang}.png`
+    // if(lang==='rs'){
+    //     srcOne='/diagramIIrs.png'
+    // }
     //console.log((t(`aboutII.mission.content`), { returnObjects: true }))
 
     return (
@@ -17,7 +25,7 @@ const About: React.FC = () => {
             <section>
                 <article className='aboutIconsWrapp'>
                     <Image
-                        src="/diagram.png"
+                        src={srcOne}
                         fill
                         style={{
                             objectFit: "contain",
@@ -39,13 +47,14 @@ const About: React.FC = () => {
                 </article>
             </section>
             <section>
-                <article className='paraWrappBottom'>
+                <article className='paraWrapp'>
                     <div className='wrapp'>
                         {about2.map((paragraph) => {
                             return (
                                 <div key={paragraph} className='articaGoals'>
                                     <h1>{t(`aboutII.${paragraph}.name`)}</h1>
-                                    <div className='aboutIIWrapp' dangerouslySetInnerHTML={{ __html: t.raw(`aboutII.${paragraph}.content`) }} />
+                                    {/* <div className='aboutIIWrapp' dangerouslySetInnerHTML={{ __html: t.raw(`aboutII.${paragraph}.content`) }} /> */}
+                                    <p>{t(`aboutII.${paragraph}.content`)}</p>
                                 </div>
 
                             );
@@ -54,7 +63,7 @@ const About: React.FC = () => {
                 </article>
                 <article className='aboutIconsWrapp'>
                     <Image
-                        src="/diagramII.png"
+                        src={srcTwo}
                         fill
                         style={{
                             objectFit: "contain",

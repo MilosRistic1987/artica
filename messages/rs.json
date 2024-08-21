@@ -40,6 +40,7 @@
         }
     },
     "About": {
+      "main":"rs",
       "about": [
         " International je moderna kompanija, osnovana 2010. godine, fokusirana na konsalting, upravljanje, projektovanje i izgradnju objekata.",
         "Kompanija je stekla priznanje za preuzimanje velikih, složenih projekata, podsticanje inovacija, prihvatanje novih tehnologija i pravljenje razlike za svoje klijente, zaposlene i zajednicu.",
@@ -49,17 +50,17 @@
         "aboutII": {
           "vision": {
             "name": "Vizija",
-            "content":"<p>Aspiriramo da budemo prepoznati kao vodeća kompanija u inženjeringu, građevinarstvu i upravljanju projektima.</p>"
+            "content":"Aspiriramo da budemo prepoznati kao vodeća kompanija u inženjeringu, građevinarstvu i upravljanju projektima."
           },
           "mission": {
             "name": "Misija",
         
-            "content":"<div className='aboutIIWrapp'><p>Biti kompanija rekorda za punu uslugu u građevinskoj industriji, koristeći našu viziju i unutrašnji fokus za stvaranje funkcionalnih umetničkih dela</p><p>Prepoznati po razvijanju i usvajanju visokokvalitetnih tehnologija i procesa</p><p>Pružanje raznovrsnijeg skupa inovativnih usluga</p><p>Služenje širem geografskom tržištu</p><p>Odgovaranje na potrebe naših klijenata, naših zaposlenih i naših zajednica</p><div>"
+            "content":"Biti kompanija rekorda za punu uslugu u građevinskoj industriji, koristeći našu viziju i unutrašnji fokus za stvaranje funkcionalnih umetničkih dela.Prepoznati po razvijanju i usvajanju visokokvalitetnih tehnologija i procesa. Pružanje raznovrsnijeg skupa inovativnih usluga. Služenje širem geografskom tržištu. Odgovaranje na potrebe naših klijenata, naših zaposlenih i naših zajednica."
           },
           "values": {
             "name": "Vrednosti",
 
-            "content":"<div className='aboutIIWrapp'><p>Naše vrednosti usmeravaju sve naše akcije. Čvrsto verujemo u integritet i transparentnost.</p><p>Tražimo izvrsnost, ispunjavamo naše obećanja i kontinuirano tražimo nove i bolje načine za pružanje najboljih rešenja za naše klijente.</p><p>Brinemo se i lično se obavezujemo na sve što radimo, posebno naše ljude, njihovu sigurnost i razvoj, naše klijente i njihov uspeh, kao i na svet u kojem živimo.</p><p>Stvaramo vrednost za klijente kroz inovativna rešenja, razmišljamo drugačije, pružamo novim idejama šansu i podržavamo ih.</p><div>"
+            "content":"Naše vrednosti usmeravaju sve naše akcije. Čvrsto verujemo u integritet i transparentnost.Tražimo izvrsnost, ispunjavamo naše obećanja i kontinuirano tražimo nove i bolje načine za pružanje najboljih rešenja za naše klijente. Brinemo se i lično se obavezujemo na sve što radimo, posebno naše ljude, njihovu sigurnost i razvoj, naše klijente i njihov uspeh, kao i na svet u kojem živimo. Stvaramo vrednost za klijente kroz inovativna rešenja, razmišljamo drugačije, pružamo novim idejama šansu i podržavamo ih."
           }
         }
       
@@ -72,8 +73,8 @@
       },
       "heading": "Kontaktirajte nas",
       "nameInput": {
-        "label": "Puno ime",
-        "placeholder": "ime"
+        "label": "Ime i Prezime",
+        "placeholder": "ime i prezime"
       },
       "emailInput": {
         "label": "Email adresa",

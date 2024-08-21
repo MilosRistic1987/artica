@@ -23,15 +23,14 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const end = start + Number(per_page) // 5, 10, 15 ...
   const aaproject = await getProjects()
   const partners = await getPartners()
-  const projects = aaproject.slice(start, end)
-  console.log(projects.length)
-  const sortedProjects = projects.sort((a, b) =>
-    a.state["en"] === b.state["en"]
-      ? 0
-      : a.state["en"] === "in progress"
-        ? -1
-        : 1
-  );
+  const sortedProjects = aaproject.slice(start, end)
+  // const sortedProjects = projects.sort((a, b) =>
+  //   a.state["en"] === b.state["en"]
+  //     ? 0
+  //     : a.state["en"] === "in progress"
+  //       ? -1
+  //       : 1
+  // );
 
 
   //console.log("FINALSOLUTION$$", aaproject);

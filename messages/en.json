@@ -40,6 +40,7 @@
         }
     },
    "About": {
+    "main":"en",
     "about": [
       " International is a modern company, founded in 2010, focused on consulting, management, building design and construction.",
       "The company has earned recognition for undertaking large, complex projects, fostering inovation, embracing emerging technologies, and making a difference for their clients, employees and community.",
@@ -49,15 +50,15 @@
     "aboutII": {
       "vision": {
         "name": "Vision",
-        "content": "<p>We aspire to be recognized as the premier engineering, construction, and project management company.</p>"
+        "content": "We aspire to be recognized as the premier engineering, construction, and project management company."
       },
       "mission": {
         "name": "Mission",
-        "content": "<div className='aboutIIWrapp'><p>To be company of record for full service in construction industry, using our vision and inner focus to create functional works of art</p><p>Recognized for developing and embracing high quality technologies and processes</p><p>Offering a more diversified set of innovative services</p><p>Serving a broader geographic market</p><p>Responsive to the needs of our clients, our employees and our communities</p></div>"
+        "content": "To be company of record for full service in construction industry, using our vision and inner focus to create functional works of art. Recognized for developing and embracing high quality technologies and processes. Offering a more diversified set of innovative services. Serving a broader geographic market. Responsive to the needs of our clients, our employees and our communities."
       },
       "values": {
         "name": "Values",
-        "content": "<div className='aboutIIWrapp'><p>Our values guide all of our actions. We strongly believe in integrity and transparency.</p><p>We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients.</p><p>We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.</p><p>We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them.</p></div>"
+        "content": "Our values guide all of our actions. We strongly believe in integrity and transparency. We demand excellence, deliver on our promises and continuously search for new and better ways to provide the best solutions for our clients. We care about and are personally committed to everything we do, especially our people, their safety and development, our customers and their success, and the world we inhabit.We create value for clients through innovative solutions, think differently, give new ideas a chance and build on people's new ideas and support them."
       }
     }
   },

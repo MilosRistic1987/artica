@@ -28,7 +28,7 @@ const InlineStyledSVG: React.FC = () => {
 
     return (
         <svg id='animeSvg' className='animationSvg' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.96 134.05" style={mainSvg} >
-            <line className='bootomPart' x1="369.4" y1="117.1" y2="117.1" style={svgStyle} />
+            <line className='bootomPart' x1="422.5" y1="117.1" y2="117.1" style={svgStyle} />
             <polygon points="394.48 134.05 394.19 134.05 394.14 133.97 394.48 134.05" style={polygonStyle} />
             <path className='child1' d="M175.21,424.46h-7.87l-3.94-6.82h0L141.69,380l-6.82-11.81v-.31l-.08.16L112.7,406.34l-6.53,11.3-3.94,6.82H94.36l3.94-6.82,7.42-12.85,25.13-43.52,3.94-6.82.08.15,3.85,6.67,3,5.14,29.58,51.23,1.15,2Z" transform="translate(-80.66 -353.45)" style={pathStyle} />
             <path className='child2' d="M490.65,424.54h-7.87l-3.93-6.82h0l-21.71-37.6-6.81-11.8V368l-.09.15-22.09,38.27-6.53,11.3-3.93,6.82h-7.87l3.93-6.82,7.43-12.86,25.13-43.52,3.93-6.81.09.15,3.84,6.66,3,5.14,29.58,51.24,1.16,2Z" transform="translate(-80.66 -353.45)" style={pathStyle} />
