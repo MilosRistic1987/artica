@@ -1,6 +1,6 @@
 import { Collestions, Language, TClientsAndPartners, TProjectFB, } from "@/types/types";
 import { firebaseApp } from "./config";
-import { getFirestore, collection, getDocs, getDoc, onSnapshot, query, where, addDoc, setDoc, doc, deleteDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, getDoc, onSnapshot, query, where, addDoc, setDoc, doc, deleteDoc, Timestamp } from "firebase/firestore";
 
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { ProjecService } from "./observable";
@@ -45,8 +45,18 @@ export const getProjects = async () => {
     const fireStore = getFirestore(firebaseApp)
     const querySnapshot = await getDocs(collection(fireStore, Collestions.ARTICA_PROJECTS));
     let data: any[] = [];
+
+
+    // Create the full project object with the converted `createdAt`
+
     querySnapshot.forEach((doc) => {
-        data.push(doc.data());
+        const docData = doc.data()
+        const createdAt = docData.createdAt ? (docData.createdAt as Timestamp).toDate() : null;
+        const project = {
+            ...docData,
+            createdAt: createdAt || new Date(), // Fallback to current date if `createdAt` is missing
+        };
+        data.push(project);
     });
 
     return data

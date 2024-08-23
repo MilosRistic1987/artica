@@ -2,6 +2,7 @@
 import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import FileUploader from './fileUploader';
 import { createFBProject, uploadFile } from '@/firebase/actions';
+import { Timestamp } from 'firebase/firestore';
 import {
     RocketLaunchIcon,
 } from '@heroicons/react/24/solid';
@@ -92,7 +93,7 @@ const ProjectCreator: React.FC = () => {
             const uploadedUrls = await Promise.all(uploadPromises);
             const { clientArray, mainArray } = separateUrls(uploadedUrls)
             const state = getStatusObject(projectStatus)
-            const project = { name: title, state, src: mainArray[0], clients: clientArray, type: projectType, location: projectLocation, managmentTags, developmentTags, id: generateId(), createdAt: new Date() }
+            const project = { name: title, state, src: mainArray[0], clients: clientArray, type: projectType, location: projectLocation, managmentTags, developmentTags, id: generateId(), createdAt: Timestamp.now() }
             console.log("projectforupload", project)
             const result = await createFBProject(project)
             toast.success("Artica Project Successfuly Created");
