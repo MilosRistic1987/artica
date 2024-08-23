@@ -23,7 +23,8 @@ export default async function Home({ params, searchParams }: HomeProps) {
   const end = start + Number(per_page) // 5, 10, 15 ...
   const aaproject = await getProjects()
   const partners = await getPartners()
-  const sortedProjects = aaproject.sort((a, b) => {
+  const projects = aaproject.slice(start, end)
+  const sortedProjects = projects.sort((a, b) => {
     // Check if createdAt exists and is a valid date
     const dateA = a.createdAt ? new Date(a.createdAt).getTime() : new Date(0).getTime();
     const dateB = b.createdAt ? new Date(b.createdAt).getTime() : new Date(0).getTime();
@@ -32,7 +33,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
     return dateA - dateB;
   });
 
-  const projects = sortedProjects.slice(start, end)
+
   // const sortedProjects = projects.sort((a, b) =>
   //   a.state["en"] === b.state["en"]
   //     ? 0
@@ -69,7 +70,7 @@ export default async function Home({ params, searchParams }: HomeProps) {
       </div>
       <section className="projectSection" id="project">
         <div className="projectList">
-          {projects?.map((project) => (
+          {sortedProjects?.map((project) => (
             <ProjectCard key={project.name['en']} data={project} locale={locale} />
           ))}
         </div>
