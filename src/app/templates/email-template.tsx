@@ -16,20 +16,27 @@ const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = async ({
   subject,
   content,
 }) => {
+
+
   const [articaLogo, mailBg] = await Promise.all([
     getPageImage(ImageBucket.MAIL, "articaBlueII.png"),
     getPageImage(ImageBucket.MAIL, "iceWall.png"),
   ]);
 
   console.log("EMAIL", articaLogo)
+  console.log('usao')
   return (
     <div
       style={{
         margin: 0,
         padding: 0,
-        background: mailBg ? `url(${mailBg}) no-repeat center center` : "none",
-        backgroundSize: "cover",
+        // background: mailBg ? `url(${mailBg}) no-repeat center center` : "none",
+        // backgroundSize: "cover",
         fontFamily: "'Inter', sans-serif",
+        minWidth: '300px',
+        maxWidth: '550px',
+        border: "1px solid #f0e9e9",
+        boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px"
       }}
     >
       <header
@@ -43,38 +50,37 @@ const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = async ({
           position: "relative",
         }}
       >
-        {articaLogo && (
-          <img
-            src={articaLogo}
-            alt="Artica Logo"
-            style={{
-              maxWidth: "100%",
-              height: "150px",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              margin: 0,
-              padding: 0,
-            }}
-          />
-        )}
+
+        <img
+          src={articaLogo}
+          alt="Artica Logo"
+          style={{
+            maxWidth: "100%",
+            height: "150px",
+            display: "block",
+            margin: "40px auto",  // Center image with margin
+            padding: 0,
+          }}
+        />
+
+
       </header>
       <main>
         <section
           style={{
-            backgroundColor: "#f3f3f3f5",
+            backgroundColor: "#fafafaf5",
             padding: "20px",
           }}
         >
-          <h5>Name: {name}</h5>
-          <h5>Email: {email}</h5>
-          <h5>Subject: {subject}</h5>
+          <label style={{ display: 'block', margin: '5px 0' }}>Name: {name}</label>
+          <label style={{ display: 'block', margin: '5px 0' }}>Email: {email}</label>
+          <label style={{ display: 'block', margin: '5px 0' }}>Subject: {subject}</label>
         </section>
         <section
           style={{
             padding: "20px",
             backgroundColor: "#fffffff7",
+            whiteSpace: "pre-wrap"
           }}
         >
           <h5>Message:</h5>
@@ -88,6 +94,7 @@ const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = async ({
           textAlign: "center",
           padding: "20px",
           fontWeight: 200,
+          fontSize: 'smaller'
         }}
       >
         <label style={{ display: "block" }}>ARTICA INTERNATIONAL doo</label>

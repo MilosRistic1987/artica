@@ -1,13 +1,14 @@
 .paginationWrapp {
     @include flexCenter;
+    margin-top: 2rem;
 
-    @include mobile {
-        margin-top: 2rem;
-    }
+    // @include mobile {
+    //     margin-top: 2rem;
+    // }
 
-    @include small-screen {
-        margin-top: 2rem;
-    }
+    // @include small-screen {
+    //     margin-top: 2rem;
+    // }
 
     & button {
         padding: 0.5rem;

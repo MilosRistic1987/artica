@@ -66,6 +66,11 @@
     display: grid;
     grid-template-rows: 20% 80%;
 
+    @include mobile {
+        grid-template-rows: auto;
+    }
+
+
 
     & .heading {
         text-transform: uppercase;
@@ -79,6 +84,7 @@
         @include mobile {
             font-size: 1rem;
             align-items: center;
+            padding: 1rem 0;
         }
 
         @include small-screen {
@@ -90,6 +96,10 @@
             font-weight: 400;
             letter-spacing: 0.1rem;
             font-size: 1.1rem;
+
+            @include mobile {
+                text-align: center;
+            }
 
         }
 

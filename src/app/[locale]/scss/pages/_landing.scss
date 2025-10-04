@@ -30,7 +30,7 @@
     min-height: 100vh;
     @include lightBg;
     display: grid;
-    grid-template-rows: 90% 10%;
+    // grid-template-rows: 90% 10%;
 
     @include mobile {
         padding: 1rem;

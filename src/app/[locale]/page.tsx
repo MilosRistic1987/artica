@@ -1,4 +1,3 @@
-
 import styles from "./page.module.css";
 import InlineStyledSVG from "./components/animationLogo";
 import ScrollButton from "./components/scrollButton";
@@ -12,27 +11,31 @@ import { getPageImage, getPartners, getProjects } from "@/firebase/actions";
 import { HomeProps, ImageBucket } from "@/types/types";
 import PaginationControls from "./components/paginationControl";
 import NavigationHandler from "./components/navigationHandler";
-
+import { PER_PAGE } from "@/helpers/global.helper";
 
 export const revalidate = 0;
 
 export default async function Home({ params, searchParams }: HomeProps) {
-  const { locale } = params
-  const { page = '1', per_page = '2' } = searchParams;
-  const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
-  const end = start + Number(per_page) // 5, 10, 15 ...
-  const aaproject = await getProjects()
-  const partners = await getPartners()
+  const { locale } = params;
+  const page = searchParams.page ?? "1";
+  const per_page = searchParams.per_page ?? PER_PAGE;
+  const start = (Number(page) - 1) * Number(per_page); // 0, 5, 10 ...
+  const end = start + Number(per_page); // 5, 10, 15 ...
+  const aaproject = await getProjects();
+  const partners = await getPartners();
   const sortedProjects = aaproject.sort((a, b) => {
     // Check if createdAt exists and is a valid date
-    const dateA = a.createdAt ? new Date(a.createdAt).getTime() : new Date(0).getTime();
-    const dateB = b.createdAt ? new Date(b.createdAt).getTime() : new Date(0).getTime();
+    const dateA = a.createdAt
+      ? new Date(a.createdAt).getTime()
+      : new Date(0).getTime();
+    const dateB = b.createdAt
+      ? new Date(b.createdAt).getTime()
+      : new Date(0).getTime();
 
     // Ensure both are numbers before subtracting
     return dateA - dateB;
   });
-  const projects = sortedProjects.slice(start, end)
-
+  const projects = sortedProjects.slice(start, end);
 
   // const sortedProjects = projects.sort((a, b) =>
   //   a.state["en"] === b.state["en"]
@@ -49,11 +52,10 @@ export default async function Home({ params, searchParams }: HomeProps) {
     "articaWall"
   );
 
-  const displayPagination = aaproject.length > Number(per_page)
+  const displayPagination = aaproject.length > Number(per_page);
 
   return (
     <main className={styles.wrapp}>
-
       <ScrollButton />
       <div
         className="animationMain"
@@ -71,16 +73,21 @@ export default async function Home({ params, searchParams }: HomeProps) {
       <section className="projectSection" id="project">
         <div className="projectList">
           {projects?.map((project) => (
-            <ProjectCard key={project.name['en']} data={project} locale={locale} />
+            <ProjectCard
+              key={project.name["en"]}
+              data={project}
+              locale={locale}
+            />
           ))}
         </div>
-        {displayPagination && <PaginationControls
-          hasNextPage={end < aaproject.length}
-          hasPrevPage={start > 0}
-          totalItems={aaproject.length}
-          locale={locale}
-        />}
-
+        {displayPagination && (
+          <PaginationControls
+            hasNextPage={end < aaproject.length}
+            hasPrevPage={start > 0}
+            totalItems={aaproject.length}
+            locale={locale}
+          />
+        )}
       </section>
       <About />
       <Contact />
